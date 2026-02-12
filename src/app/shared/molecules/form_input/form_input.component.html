@@ -1,0 +1,22 @@
+<div class="form-input">
+  <label *ngIf="label">{{ label }}</label>
+
+  <!-- Input com máscara -->
+  <input
+    *ngIf="isMasked"
+    pInputMask
+    [(ngModel)]="model"
+    [mask]="mask"
+    [disabled]="disabled"
+    class="p-inputtext p-component"
+  />
+
+  <!-- Input normal -->
+  <input
+    *ngIf="!isMasked"
+    pInputText
+    [(ngModel)]="model"
+    [disabled]="disabled"
+    class="p-inputtext p-component"
+  />
+</div>

@@ -2,7 +2,8 @@ import type { StorybookConfig } from '@storybook/angular';
 
 const config: StorybookConfig = {
   "stories": ['../src/**/*.stories.ts'],
-  "addons": [],
-  "framework": "@storybook/angular"
+  "addons": ['@storybook/addon-docs'],
+  "framework": "@storybook/angular",
+  "staticDirs": ['../node_modules'],
 };
 export default config;

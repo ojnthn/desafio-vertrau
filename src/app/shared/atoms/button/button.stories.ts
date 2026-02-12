@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
 
 const meta: Meta<ButtonComponent> = {
@@ -6,17 +6,27 @@ const meta: Meta<ButtonComponent> = {
   component: ButtonComponent,
   tags: ['autodocs'],
   argTypes: {
-    label: {
-      control: 'text',
+    variant: {
+      control: { type: 'radio' },
+      options: ['primary', 'secondary',],
+      description: 'Tipo visual do botão',
+    },
+    destructive: {
+      control: 'boolean',
+      description: "Muda o visual para uma ação destrutiva"
     },
     disabled: {
       control: 'boolean',
+      description: 'Desabilita o botão independentemente do estado',
     },
-    severity: {
-      control: {
-        type: 'select',
-      },
-      options: ['primary', 'secondary', 'success', 'danger'],
+    loading: {
+      control: 'boolean',
+      description: 'Exibe loading (somente para primary)',
+      if: { arg: 'variant', eq: 'primary' },
+    },
+    action: { 
+      action: 'button-click',
+      description: 'Evento disparado ao clicar no botão',
     },
   },
 };
@@ -25,38 +35,22 @@ export default meta;
 
 type Story = StoryObj<ButtonComponent>;
 
-export const Primary: Story = {
+export const Primário: Story = {
   args: {
     label: 'Salvar',
-    severity: 'primary',
+    variant: 'primary',
+    destructive: false,
     disabled: false,
+    loading: false,
   },
 };
 
-export const Secondary: Story = {
+export const Secundário: Story = {
   args: {
-    label: 'Cancelar',
-    severity: 'secondary',
-  },
-};
-
-export const Success: Story = {
-  args: {
-    label: 'Confirmar',
-    severity: 'success',
-  },
-};
-
-export const Danger: Story = {
-  args: {
-    label: 'Excluir',
-    severity: 'danger',
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    label: 'Desabilitado',
-    disabled: true,
+    label: 'Voltar',
+    variant: 'secondary',
+    destructive: false,
+    disabled: false,
+    loading: false,
   },
 };

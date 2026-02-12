@@ -1,6 +1,113 @@
 {
     "pipes": [],
-    "interfaces": [],
+    "interfaces": [
+        {
+            "name": "SelectOption",
+            "id": "interface-SelectOption-e17d1973c08b571dec5344321eab60f2599deb43d94821efcb9626adfdb0585b1559edaaf589fcd16e42e7063749feb502073f7b86936ccc3afba540084afaf3",
+            "file": "src/app/shared/atoms/select/select.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\nimport { FormsModule } from '@angular/forms';\nimport { SelectModule } from 'primeng/select';\n\n/**\n * Tipo genérico para opção de select\n */\nexport interface SelectOption<T = any> {\n  label: string;\n  value: T;\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-select',\n  standalone: true,\n  imports: [SelectModule, FormsModule],\n  templateUrl: './select.component.html',\n  styleUrls: ['./select.component.scss'],\n})\nexport class SelectComponent<T = any> {\n  /** Lista de opções */\n  @Input() options: SelectOption<T>[] = [];\n\n  /** Valor selecionado */\n  @Input() value?: T;\n\n  /** Placeholder do select */\n  @Input() placeholder = 'Selecione uma opção';\n\n  /** Desabilita o select */\n  @Input() disabled = false;\n\n  /** Limpa seleção */\n  @Input() clearable = false;\n\n  /** Evento disparado ao alterar o valor */\n  @Output() valueChange = new EventEmitter<T>();\n\n  onChange(value: T): void {\n    this.valueChange.emit(value);\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "T",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "description": "<p>Tipo genérico para opção de select</p>\n",
+            "rawdescription": "\n\nTipo genérico para opção de select\n",
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "TabItem",
+            "id": "interface-TabItem-53e99dfc9185c77513f2163f063b103a1d14bf1a488dc2299e2d3b130c01cf2577545dda2272d1f62afad70b80e67a43e96bfc116aa647d7141330ac4b492612",
+            "file": "src/app/shared/organisms/tabs/tabs.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Component, Input, Type } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TabsModule } from 'primeng/tabs';\n\nexport interface TabItem {\n  /** Id da aba */\n  id: number;\n\n  /** Título da aba */\n  label: string;\n\n  /** Componente Angular a ser renderizado dentro da aba */\n  component: Type<any>;\n\n  /** Opcional: desabilita a aba */\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-tabs',\n  standalone: true,\n  imports: [CommonModule, TabsModule],\n  templateUrl: './tabs.component.html',\n  styleUrls: ['./tabs.component.scss'],\n})\nexport class TabsComponent {\n  /** Lista de abas */\n  @Input() tabs: TabItem[] = [];\n\n  /** Aba ativa */\n  activeIndex = 0;\n\n  /** Seleciona aba ativa */\n  selectTab(index: number) {\n    if (this.tabs[index]?.disabled) return;\n    this.activeIndex = index;\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "component",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Type<any>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Componente Angular a ser renderizado dentro da aba</p>\n",
+                    "line": 13,
+                    "rawdescription": "\nComponente Angular a ser renderizado dentro da aba"
+                },
+                {
+                    "name": "disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "<p>Opcional: desabilita a aba</p>\n",
+                    "line": 16,
+                    "rawdescription": "\nOpcional: desabilita a aba"
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Id da aba</p>\n",
+                    "line": 7,
+                    "rawdescription": "\nId da aba"
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Título da aba</p>\n",
+                    "line": 10,
+                    "rawdescription": "\nTítulo da aba"
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        }
+    ],
     "injectables": [],
     "guards": [],
     "interceptors": [],
@@ -8,8 +115,8 @@
     "directives": [],
     "components": [
         {
-            "name": "AppComponent",
-            "id": "component-AppComponent-cc79e8af802c23aa516351bdd66de70791847f9febe47de6be2b370778aeed1bca8b0e29320a4f0f837b9048a40cf327494c5f1e590396d8444759f72da527f9",
+            "name": "App",
+            "id": "component-App-a32f697a6ba61b189531b3c84a94e92f633cb1ec1f60dc34f55e1fc192a87bb9d18fca0354f8d90e3972c12c75c51c3ed63406935cb72ba4a5dafff327c385df",
             "file": "src/app/app.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -19,78 +126,53 @@
             "selector": "app-root",
             "styleUrls": [],
             "styles": [],
-            "templateUrl": [
-                "./app.component.html"
-            ],
+            "template": "<app-button\n  label=\"Salvar\"\n  [disabled]=\"false\"\n  severity=\"success\">\n</app-button>\n",
+            "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [
+            "propertiesClass": [
                 {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 12,
+                    "name": "title",
+                    "defaultValue": "signal('desafio-vertrau')",
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
                 }
             ],
+            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
             "standalone": false,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { PrimeNG } from 'primeng/config';\n\n@Component({\n    selector: 'app-root',\n    templateUrl: './app.component.html'\n})\nexport class AppComponent implements OnInit {\n\n    constructor(private primeng: PrimeNG) {}\n\n    ngOnInit() {\n        this.primeng.ripple.set(true);\n    }\n}",
+            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { ButtonComponent } from './shared/atoms/button/button.component';\n\n@Component({\n  selector: 'app-root',\n  imports: [ButtonComponent],\n  template: `\n    <app-button\n      label=\"Salvar\"\n      [disabled]=\"false\"\n      severity=\"success\">\n    </app-button>\n  `\n})\nexport class App {\n  protected readonly title = signal('desafio-vertrau');\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "primeng",
-                        "type": "PrimeNG",
-                        "optional": false,
-                        "dotDotDotToken": false,
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 8,
-                "jsdoctags": [
-                    {
-                        "name": "primeng",
-                        "type": "PrimeNG",
-                        "optional": false,
-                        "dotDotDotToken": false,
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "extends": [],
-            "implements": [
-                "OnInit"
-            ],
-            "templateData": "<p-button label=\"Check\" />"
+            "extends": []
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-73643939a15001b90b3cd8f34740cc970d4bb5aca12a01f7d1f6b499a75762f772cbe4f974c39a20d40b029618bd65190a9da0708fdd0a311b523d7de3ee2b0f",
+            "id": "component-ButtonComponent-492d2be3c142ff6ed4a7804f32958c6c6a6557f624d7b83ee19846da83ef5cb7764955baa92484bbf53697a29b4da8fd03cf4cb8147e69fd48bc1dfdd088bc8d",
             "file": "src/app/shared/atoms/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -98,13 +180,25 @@
             "outputs": [],
             "providers": [],
             "selector": "app-button",
-            "styleUrls": [],
+            "styleUrls": [
+                "./button.component.scss"
+            ],
             "styles": [],
-            "template": "<p-button\n  [label]=\"label\"\n  [disabled]=\"disabled\"\n  [severity]=\"severity\">\n</p-button>\n",
-            "templateUrl": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
+                {
+                    "name": "destructive",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "boolean",
+                    "decorators": []
+                },
                 {
                     "name": "disabled",
                     "defaultValue": "false",
@@ -124,18 +218,47 @@
                     "decorators": []
                 },
                 {
-                    "name": "severity",
-                    "defaultValue": "'primary'",
+                    "name": "loading",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 19,
-                    "type": "\"primary\" | \"secondary\" | \"success\" | \"danger\"",
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "\"primary\" | \"secondary\"",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "action",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "onClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -147,14 +270,314 @@
                     "type": "module"
                 }
             ],
+            "description": "<p>Botão base da aplicação</p>\n<p>Baseado em PrimeNG e usado como átomo no Design System.</p>\n",
+            "rawdescription": "\n\nBotão base da aplicação\n\nBaseado em PrimeNG e usado como átomo no Design System.\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { ButtonModule } from 'primeng/button';\n\n/**\n * Botão base da aplicação\n *\n * Baseado em PrimeNG e usado como átomo no Design System.\n */\n@Component({\n  selector: 'app-button',\n  standalone: true,\n  imports: [ButtonModule],\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {\n  @Input() label = 'Botão';\n  @Input() disabled = false;\n  @Input() loading = false;\n\n  @Input() variant: 'primary' | 'secondary' = 'primary';\n  @Input() destructive = false;\n\n  @Output() action = new EventEmitter<void>();\n\n  get severity(): 'secondary' | 'danger' {\n    return this.destructive ? 'danger' : 'secondary';\n  }\n\n  get outlined(): boolean {\n    return this.variant === 'secondary';\n  }\n\n  get isDisabled(): boolean {\n    return this.disabled || this.loading;\n  }\n\n  onClick(): void {\n    if (this.isDisabled) return;\n    this.action.emit();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host ::ng-deep .p-button {\n  min-height: 44px;\n  font-weight: 500;\n  border-radius: 8px;\n}\n\n:host ::ng-deep .p-button.p-button-outlined {\n  background-color: transparent;\n}\n",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "severity": {
+                    "name": "severity",
+                    "getSignature": {
+                        "name": "severity",
+                        "type": "unknown",
+                        "returnType": "\"secondary\" | \"danger\"",
+                        "line": 26
+                    }
+                },
+                "outlined": {
+                    "name": "outlined",
+                    "getSignature": {
+                        "name": "outlined",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 30
+                    }
+                },
+                "isDisabled": {
+                    "name": "isDisabled",
+                    "getSignature": {
+                        "name": "isDisabled",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 34
+                    }
+                }
+            },
+            "templateData": "<p-button\n  [label]=\"label\"\n  [severity]=\"severity\"\n  [outlined]=\"outlined\"\n  [loading]=\"loading\"\n  [disabled]=\"isDisabled\"\n  (onClick)=\"onClick()\">\n</p-button>\n"
+        },
+        {
+            "name": "SelectComponent",
+            "id": "component-SelectComponent-e17d1973c08b571dec5344321eab60f2599deb43d94821efcb9626adfdb0585b1559edaaf589fcd16e42e7063749feb502073f7b86936ccc3afba540084afaf3",
+            "file": "src/app/shared/atoms/select/select.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-select",
+            "styleUrls": [
+                "./select.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./select.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "clearable",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nLimpa seleção",
+                    "description": "<p>Limpa seleção</p>\n",
+                    "line": 36,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDesabilita o select",
+                    "description": "<p>Desabilita o select</p>\n",
+                    "line": 33,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "options",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nLista de opções",
+                    "description": "<p>Lista de opções</p>\n",
+                    "line": 24,
+                    "type": "SelectOption<T>[]",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "'Selecione uma opção'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPlaceholder do select",
+                    "description": "<p>Placeholder do select</p>\n",
+                    "line": 30,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nValor selecionado",
+                    "description": "<p>Valor selecionado</p>\n",
+                    "line": 27,
+                    "type": "T",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter<T>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEvento disparado ao alterar o valor",
+                    "description": "<p>Evento disparado ao alterar o valor</p>\n",
+                    "line": 39,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "onChange",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "T",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "T",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "SelectModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { ButtonModule } from 'primeng/button';\n\n@Component({\n  selector: 'app-button',\n  standalone: true,\n  imports: [ButtonModule],\n  template: `\n    <p-button\n      [label]=\"label\"\n      [disabled]=\"disabled\"\n      [severity]=\"severity\">\n    </p-button>\n  `,\n})\nexport class ButtonComponent {\n  @Input() label = 'Botão';\n  @Input() disabled = false;\n  @Input() severity: 'primary' | 'secondary' | 'success' | 'danger' = 'primary';\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\nimport { FormsModule } from '@angular/forms';\nimport { SelectModule } from 'primeng/select';\n\n/**\n * Tipo genérico para opção de select\n */\nexport interface SelectOption<T = any> {\n  label: string;\n  value: T;\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-select',\n  standalone: true,\n  imports: [SelectModule, FormsModule],\n  templateUrl: './select.component.html',\n  styleUrls: ['./select.component.scss'],\n})\nexport class SelectComponent<T = any> {\n  /** Lista de opções */\n  @Input() options: SelectOption<T>[] = [];\n\n  /** Valor selecionado */\n  @Input() value?: T;\n\n  /** Placeholder do select */\n  @Input() placeholder = 'Selecione uma opção';\n\n  /** Desabilita o select */\n  @Input() disabled = false;\n\n  /** Limpa seleção */\n  @Input() clearable = false;\n\n  /** Evento disparado ao alterar o valor */\n  @Output() valueChange = new EventEmitter<T>();\n\n  onChange(value: T): void {\n    this.valueChange.emit(value);\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": "",
+            "styleUrlsData": [
+                {
+                    "data": ".app-select {\n  width: 100%;\n}\n",
+                    "styleUrl": "./select.component.scss"
+                }
+            ],
             "stylesData": "",
-            "extends": []
+            "extends": [],
+            "templateData": "<p-select\n  [options]=\"options\"\n  optionLabel=\"label\"\n  optionValue=\"value\"\n  [placeholder]=\"placeholder\"\n  [disabled]=\"disabled\"\n  [showClear]=\"clearable\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onChange($event)\"\n  styleClass=\"app-select\"\n>\n</p-select>\n"
+        },
+        {
+            "name": "TabsComponent",
+            "id": "component-TabsComponent-53e99dfc9185c77513f2163f063b103a1d14bf1a488dc2299e2d3b130c01cf2577545dda2272d1f62afad70b80e67a43e96bfc116aa647d7141330ac4b492612",
+            "file": "src/app/shared/organisms/tabs/tabs.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-tabs",
+            "styleUrls": [
+                "./tabs.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tabs.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "tabs",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nLista de abas",
+                    "description": "<p>Lista de abas</p>\n",
+                    "line": 28,
+                    "type": "TabItem[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "activeIndex",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Aba ativa</p>\n",
+                    "line": 31,
+                    "rawdescription": "\nAba ativa"
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "selectTab",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSeleciona aba ativa",
+                    "description": "<p>Seleciona aba ativa</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TabsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Type } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TabsModule } from 'primeng/tabs';\n\nexport interface TabItem {\n  /** Id da aba */\n  id: number;\n\n  /** Título da aba */\n  label: string;\n\n  /** Componente Angular a ser renderizado dentro da aba */\n  component: Type<any>;\n\n  /** Opcional: desabilita a aba */\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-tabs',\n  standalone: true,\n  imports: [CommonModule, TabsModule],\n  templateUrl: './tabs.component.html',\n  styleUrls: ['./tabs.component.scss'],\n})\nexport class TabsComponent {\n  /** Lista de abas */\n  @Input() tabs: TabItem[] = [];\n\n  /** Aba ativa */\n  activeIndex = 0;\n\n  /** Seleciona aba ativa */\n  selectTab(index: number) {\n    if (this.tabs[index]?.disabled) return;\n    this.activeIndex = index;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./tabs.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p-tabs value=\"0\">\n  <p-tablist value=\"0\">\n    <p-tab\n      *ngFor=\"let tab of tabs; let i = index\"\n      [header]=\"tab.label\"\n      [disabled]=\"tab.disabled\"\n      [value]=\"tab.id\"\n    >\n      {{ tab.label }}\n    </p-tab>\n  </p-tablist>\n  <p-tabpanels>\n    <p-tabpanel \n      *ngFor=\"let tab of tabs; let i = index\" \n      [value]=\"tab.id\"\n    >\n        <ng-container *ngComponentOutlet=\"tab.component\"></ng-container>\n    </p-tabpanel>\n  </p-tabpanels>\n</p-tabs>"
         }
     ],
     "modules": [],
@@ -168,7 +591,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
-                "defaultValue": "{\n  providers: [\n    providePrimeNG({\n      theme: {\n        preset: Aura\n      }\n    }),\n    provideBrowserGlobalErrorListeners(),\n    provideRouter(routes)\n  ]\n}"
+                "defaultValue": "{\n  providers: [\n    providePrimeNG({\n      theme: {\n        preset: Aura,\n      },\n    }),\n    provideBrowserGlobalErrorListeners(),\n    provideRouter(routes)\n  ]\n}"
             },
             {
                 "name": "routes",
@@ -194,7 +617,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
-                    "defaultValue": "{\n  providers: [\n    providePrimeNG({\n      theme: {\n        preset: Aura\n      }\n    }),\n    provideBrowserGlobalErrorListeners(),\n    provideRouter(routes)\n  ]\n}"
+                    "defaultValue": "{\n  providers: [\n    providePrimeNG({\n      theme: {\n        preset: Aura,\n      },\n    }),\n    provideBrowserGlobalErrorListeners(),\n    provideRouter(routes)\n  ]\n}"
                 }
             ],
             "src/app/app.routes.ts": [
@@ -220,8 +643,8 @@
         "children": []
     },
     "coverage": {
-        "count": 0,
-        "status": "low",
+        "count": 33,
+        "status": "medium",
         "files": [
             {
                 "filePath": "src/app/app.config.ts",
@@ -247,9 +670,9 @@
                 "filePath": "src/app/app.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "AppComponent",
+                "name": "App",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {
@@ -257,9 +680,45 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coveragePercent": 12,
+                "coverageCount": "1/8",
                 "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/atoms/select/select.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SelectComponent",
+                "coveragePercent": 75,
+                "coverageCount": "6/8",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/shared/atoms/select/select.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "SelectOption",
+                "coveragePercent": 25,
+                "coverageCount": "1/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/organisms/tabs/tabs.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TabsComponent",
+                "coveragePercent": 75,
+                "coverageCount": "3/4",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/shared/organisms/tabs/tabs.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "TabItem",
+                "coveragePercent": 80,
+                "coverageCount": "4/5",
+                "status": "very-good"
             }
         ]
     }
