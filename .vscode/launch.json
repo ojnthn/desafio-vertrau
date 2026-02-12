@@ -3,18 +3,26 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
+      "name": "Angular: Chrome Debug",
       "type": "chrome",
       "request": "launch",
+      "url": "http://localhost:4200",
       "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true
     },
     {
-      "name": "ng test",
-      "type": "chrome",
+      "name": "Storybook",
+      "type": "node",
       "request": "launch",
-      "preLaunchTask": "npm: test",
-      "url": "http://localhost:9876/debug.html"
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "storybook"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "NODE_ENV": "development"
+      }
     }
-  ]
+  ],
 }
