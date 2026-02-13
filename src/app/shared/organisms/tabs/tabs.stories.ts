@@ -6,6 +6,15 @@ const meta: Meta<TabsComponent> = {
   title: 'Organisms/Tabs',
   component: TabsComponent,
   tags: ['autodocs'],
+  argTypes: {
+    tabs: {
+      action: 'tabs',
+      description: 'Lista de abas para exibição',
+      table: {
+        category: 'Behaviour'
+      }
+    }
+  }
 };
 
 export default meta;

@@ -1,0 +1,26 @@
+<div class="form-field">
+  <p-floatLabel>
+    <ng-container *ngIf="mask; else inputText">
+      <p-inputMask
+        [mask]="mask"
+        [formControl]="control"
+        [ngClass]="{ 'p-invalid': hasError }"
+      />
+    </ng-container>
+
+    <ng-template #inputText>
+      <input
+        pInputText
+        [type]="type"
+        [formControl]="control"
+        [ngClass]="{ 'p-invalid': hasError }"
+      />
+    </ng-template>
+
+    <label>{{ label }}</label>
+  </p-floatLabel>
+
+  <small *ngIf="hasError" class="error">
+    {{ errorMessage }}
+  </small>
+</div>

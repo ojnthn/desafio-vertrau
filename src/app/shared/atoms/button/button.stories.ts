@@ -8,25 +8,42 @@ const meta: Meta<ButtonComponent> = {
   argTypes: {
     variant: {
       control: { type: 'radio' },
-      options: ['primary', 'secondary',],
-      description: 'Tipo visual do botão',
+      options: ['primary', 'secondary'],
+      description: 'Define a variante visual do botão',
+      table: {
+        type: { summary: `'primary' | 'secondary'` },
+        defaultValue: { summary: 'primary' },
+        category: 'Appearance',
+      },
     },
     destructive: {
       control: 'boolean',
-      description: "Muda o visual para uma ação destrutiva"
+      description: 'Aplica estilo visual para ações destrutivas',
+      table: {
+        category: 'Appearance',
+      },
     },
     disabled: {
       control: 'boolean',
-      description: 'Desabilita o botão independentemente do estado',
+      description: 'Desabilita o botão independentemente de outros estados',
+      table: {
+        category: 'State',
+      },
     },
     loading: {
       control: 'boolean',
-      description: 'Exibe loading (somente para primary)',
+      description: 'Exibe estado de carregamento (apenas na variante primary)',
       if: { arg: 'variant', eq: 'primary' },
+      table: {
+        category: 'State',
+      },
     },
-    action: { 
+    action: {
       action: 'button-click',
       description: 'Evento disparado ao clicar no botão',
+      table: {
+        category: 'Events',
+      },
     },
   },
 };
@@ -35,7 +52,7 @@ export default meta;
 
 type Story = StoryObj<ButtonComponent>;
 
-export const Primário: Story = {
+export const Default: Story = {
   args: {
     label: 'Salvar',
     variant: 'primary',
@@ -45,7 +62,7 @@ export const Primário: Story = {
   },
 };
 
-export const Secundário: Story = {
+export const Secondary: Story = {
   args: {
     label: 'Voltar',
     variant: 'secondary',
