@@ -1,0 +1,48 @@
+<app-card header="Endereço">
+    <div style="display:grid; gap:16px; max-width:680px;">
+
+    <app-form-input
+        [control]="store.cep"
+        label="CEP"
+        type="post-code"
+        errorMessage="CEP é obrigatório"
+    ></app-form-input>
+
+    <app-form-input
+        [control]="store.state"
+        label="Estado (UF)"
+        type="text"
+        errorMessage="Estado é obrigatório"
+    ></app-form-input>
+
+    <app-form-input
+        [control]="store.street"
+        label="Rua"
+        type="text"
+        errorMessage="Rua é obrigatória"
+    ></app-form-input>
+
+    <app-form-input
+        [control]="store.neighborhood"
+        label="Bairro"
+        type="text"
+        errorMessage="Bairro é obrigatório"
+    ></app-form-input>
+
+    <small *ngIf="store.number.invalid && store.number.touched" style="color: var(--p-red-500);">
+        Número é obrigatório e deve conter apenas dígitos
+    </small>
+
+    <app-form-input
+        [control]="store.complement"
+        label="Complemento (opcional)"
+        type="text"
+    ></app-form-input>
+
+    <div style="display:flex; justify-content:space-between; gap:12px;">
+        <button pButton type="button" label="Voltar" severity="secondary" (click)="goBack()"></button>
+        <button pButton type="button" label="Salvar" (click)="save()"></button>
+    </div>
+
+    </div>
+</app-card>

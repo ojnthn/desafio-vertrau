@@ -7,10 +7,9 @@ import { CepResponseModel } from './cep.model';
 export class CepService {
   constructor(private http: HttpClient) {}
 
-  getCep(cep: string): Observable<CepResponseModel> {
-    const normalizedCep = cep.replace(/\D/g, '');
-    return this.http.get<CepResponseModel>(
-      `https://viacep.com.br/ws/${normalizedCep}/json/`
-    );
+  getData(cep: string): Observable<CepResponseModel> {
+    const onlyDigits = cep.replace(/\D/g, '');
+    return this.http.get<CepResponseModel>(`https://viacep.com.br/ws/${onlyDigits}/json/`);
   }
 }
+

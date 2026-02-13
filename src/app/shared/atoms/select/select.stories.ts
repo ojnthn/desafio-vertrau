@@ -6,13 +6,6 @@ const meta: Meta<SelectComponent> = {
   component: SelectComponent,
   tags: ['autodocs'],
   argTypes: {
-    valueChange: {
-      action: 'valueChange',
-      description: 'Evento disparado ao selecionar uma opção',
-      table: {
-        category: 'Events',
-      },
-    },
     placeholder: {
       action: 'placeholder',
       description: 'Define um placeholder para ser exibido ao usuário',

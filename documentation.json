@@ -48,12 +48,12 @@
         },
         {
             "name": "DataListAction",
-            "id": "interface-DataListAction-dcc8b346e0fcd6de8a36b8b5a83f0ad1a8636192a91fccece4b50a03089e43e37ddfaa88f262ff7317e6285209aab4aa6292ed8874f5c94a441a4885632ef857",
+            "id": "interface-DataListAction-dc84cc61fb873128199274dc9fe1267bec202d917aca5ec24fd445d1903fa07a7dd4c1eebdc91c1c0df010e59119b98927c4f2feae40b897431efd9630a595b0",
             "file": "src/app/shared/organisms/list/list.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\nimport { NgForOf } from \"../../../../../node_modules/@angular/common/types/_common_module-chunk\";\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent<T> {\n\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent<T> {\n\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
             "properties": [
                 {
                     "name": "icon",
@@ -63,7 +63,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 13
+                    "line": 12
                 },
                 {
                     "name": "label",
@@ -73,7 +73,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 11
                 },
                 {
                     "name": "onClick",
@@ -83,7 +83,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 13
                 }
             ],
             "indexSignatures": [],
@@ -93,12 +93,12 @@
         },
         {
             "name": "DataListColumn",
-            "id": "interface-DataListColumn-dcc8b346e0fcd6de8a36b8b5a83f0ad1a8636192a91fccece4b50a03089e43e37ddfaa88f262ff7317e6285209aab4aa6292ed8874f5c94a441a4885632ef857",
+            "id": "interface-DataListColumn-dc84cc61fb873128199274dc9fe1267bec202d917aca5ec24fd445d1903fa07a7dd4c1eebdc91c1c0df010e59119b98927c4f2feae40b897431efd9630a595b0",
             "file": "src/app/shared/organisms/list/list.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\nimport { NgForOf } from \"../../../../../node_modules/@angular/common/types/_common_module-chunk\";\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent<T> {\n\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent<T> {\n\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
             "properties": [
                 {
                     "name": "field",
@@ -108,7 +108,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 7
+                    "line": 6
                 },
                 {
                     "name": "label",
@@ -118,7 +118,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 6
+                    "line": 5
                 },
                 {
                     "name": "width",
@@ -128,7 +128,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 8
+                    "line": 7
                 }
             ],
             "indexSignatures": [],
@@ -826,7 +826,7 @@
         },
         {
             "name": "CardComponent",
-            "id": "component-CardComponent-474d0eea9a3c0c049cd2134f25bdd8245cfdc4621855cc59465fbeca773da75e6c659b52f173ab2c2e83a06e245060d5d7823ed9f4b0562daa1085dcfc8e750d",
+            "id": "component-CardComponent-b4d930813fee69bad551037683304fe071cb7661621b507d228624ac61be7b0bcdef4d97b6d67d23cf9b3b30b7181297d8b0e00e100d2442c290f7785ead0e63",
             "file": "src/app/shared/molecules/card/card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -841,7 +841,16 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "header",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
@@ -859,12 +868,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from \"@angular/core\";\nimport { CardModule } from \"primeng/card\";\n\n@Component({\n    selector: 'app-card',\n    standalone: true,\n    templateUrl: './card.component.html',\n    imports: [CardModule]\n})\n\nexport class CardComponent {}",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\nimport { CardModule } from \"primeng/card\";\n\n@Component({\n    selector: 'app-card',\n    standalone: true,\n    templateUrl: './card.component.html',\n    imports: [CardModule]\n})\n\nexport class CardComponent {\n    @Input() header?: string;\n}",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p-card header=\"Simple Card\">\n    <ng-content></ng-content>\n</p-card>\n"
+            "templateData": "<p-card [header]=\"header\">\n    <ng-content></ng-content>\n</p-card>\n"
         },
         {
             "name": "FormComponent",
@@ -1175,7 +1184,7 @@
         },
         {
             "name": "ListComponent",
-            "id": "component-ListComponent-dcc8b346e0fcd6de8a36b8b5a83f0ad1a8636192a91fccece4b50a03089e43e37ddfaa88f262ff7317e6285209aab4aa6292ed8874f5c94a441a4885632ef857",
+            "id": "component-ListComponent-dc84cc61fb873128199274dc9fe1267bec202d917aca5ec24fd445d1903fa07a7dd4c1eebdc91c1c0df010e59119b98927c4f2feae40b897431efd9630a595b0",
             "file": "src/app/shared/organisms/list/list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1197,7 +1206,7 @@
                     "name": "action",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 29,
                     "type": "function",
                     "decorators": []
                 },
@@ -1206,7 +1215,7 @@
                     "defaultValue": "'Ação'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "string",
                     "decorators": []
                 },
@@ -1215,7 +1224,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 27,
                     "type": "Array<literal type>",
                     "decorators": []
                 },
@@ -1224,7 +1233,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 26,
                     "type": "T[]",
                     "decorators": []
                 }
@@ -1246,7 +1255,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\nimport { NgForOf } from \"../../../../../node_modules/@angular/common/types/_common_module-chunk\";\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent<T> {\n\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent<T> {\n\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1836,7 +1845,7 @@
         },
         {
             "name": "UserListPage",
-            "id": "component-UserListPage-6969448e3bebf55a11e95f0808a5ba7a905e91954b6f180c1f8e504f376cd5b48ccc9622d6d84bed0c7486f8441738694cf118d5e9b7a5f3fd8197152d6ce332",
+            "id": "component-UserListPage-eb3e6676ad8d14fa7ba97b03a3d80d36b1fbedc4b09fd477beb7f1a65ab41afed92e5353978e8e963df4a4502439634e5af0a15675b2f07d92d04167d31ab133",
             "file": "src/app/features/user/pages/list/user-list.page.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1868,17 +1877,21 @@
                 {
                     "name": "CardComponent",
                     "type": "component"
+                },
+                {
+                    "name": "ListComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CardComponent } from '../../../../shared/molecules/card/card.component';\n\n@Component({\n  selector: 'app-usuario-lista-page',\n  standalone: true,\n  imports: [CommonModule, CardComponent],\n  templateUrl: './user-list.page.html',\n})\nexport class UserListPage {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CardComponent } from '../../../../shared/molecules/card/card.component';\nimport { ListComponent } from '../../../../shared/organisms/list/list.component';\n\n@Component({\n  selector: 'app-usuario-lista-page',\n  standalone: true,\n  imports: [CommonModule, CardComponent, ListComponent],\n  templateUrl: './user-list.page.html',\n})\nexport class UserListPage {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<app-card>\n  <div card-header class=\"page-header\">\n    <h2 class=\"title\">Lista de usuários</h2>\n  </div>\n</app-card>"
+            "templateData": "<app-card\n  header=\"Lista de usuários\"\n>\n  <app-list \n  [items]=\"[\n    { name: 'João Silva', email: 'joao@email.com', action: '' },\n    { name: 'Maria Souza', email: 'maria@email.com' },\n  ]\" \n  [columns]=\"[\n    { label: 'Nome', field: 'name' },\n    { label: 'Email', field: 'email' },\n  ]\"\n  actionLabel=\"Editar\"\n  ></app-list>\n</app-card>"
         },
         {
             "name": "UserNewPage",
@@ -2262,7 +2275,7 @@
                 "linktype": "component",
                 "name": "CardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {

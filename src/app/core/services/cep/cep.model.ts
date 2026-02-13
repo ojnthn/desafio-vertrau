@@ -1,5 +1,6 @@
 export interface CepResponseModel {
-    estado: string;
+    uf: string;
     logradouro: string;
     bairro: string;
+    erro?: boolean;
 }

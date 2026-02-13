@@ -1,0 +1,40 @@
+<app-card header="Dados do usuário">
+    <div style="display:grid; gap:16px; max-width:680px;">
+
+    <app-form-input
+        [control]="store.firstName"
+        label="Nome"
+        type="text"
+        errorMessage="Nome é obrigatório"
+    ></app-form-input>
+
+    <app-form-input
+        [control]="store.lastName"
+        label="Sobrenome"
+        type="text"
+        errorMessage="Sobrenome é obrigatório"
+    ></app-form-input>
+
+    <p-floatLabel>
+        <app-select
+            inputId="gender"
+            [options]="genderOptions"
+            optionLabel="label"
+            optionValue="value"
+            [formControl]="store.gender"
+            placeholder="Selecione"
+            [clearable]="true"
+        ></app-select>
+        <label for="gender">Gênero</label>
+    </p-floatLabel>
+
+    <small *ngIf="store.gender.invalid && store.gender.touched" style="color: var(--p-red-500);">
+        Gênero é obrigatório
+    </small>
+
+    <div style="display:flex; justify-content:flex-end; gap:12px;">
+        <button pButton type="button" label="Próximo" (click)="goNext()"></button>
+    </div>
+
+    </div>
+</app-card>

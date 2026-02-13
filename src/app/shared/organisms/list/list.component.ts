@@ -13,7 +13,6 @@ export interface DataListAction<T> {
   onClick: (item: T) => void;
 }
 
-
 @Component({
   selector: 'app-list',
   standalone: true,
@@ -21,8 +20,8 @@ export interface DataListAction<T> {
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent<T> {
 
+export class ListComponent<T> {
   @Input() items: T[] = [];
   @Input() columns: Array<{ label: string; field: keyof T }> = [];
   @Input() actionLabel = 'Ação';

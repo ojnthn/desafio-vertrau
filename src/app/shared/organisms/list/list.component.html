@@ -3,7 +3,6 @@
     [value]="items"
     [tableStyle]="{ 'min-width': '50rem' }"
   >
-    <!-- HEADER -->
     <ng-template pTemplate="header">
       <tr>
         @for (col of columns; track col.label) {
@@ -27,7 +26,6 @@
       </tr>
     </ng-template>
 
-    <!-- EMPTY STATE -->
     <ng-template pTemplate="emptymessage">
       <tr>
         <td [attr.colspan]="columns.length + 1">

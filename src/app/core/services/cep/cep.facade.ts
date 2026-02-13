@@ -25,12 +25,12 @@ export class CepFacade {
   }
 
   private lookupCep(form: FormGroup, cep: string): void {
-    this.cepService.getCep(cep).subscribe({
+    this.cepService.getData(cep).subscribe({
       next: (data) => {
         form.patchValue({
           street: data.logradouro,
           neighborhood: data.bairro,
-          state: data.estado
+          state: data.uf
         });
       },
       error: () => {

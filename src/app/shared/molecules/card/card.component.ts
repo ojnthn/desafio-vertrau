@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { CardModule } from "primeng/card";
 
 @Component({
@@ -8,4 +8,6 @@ import { CardModule } from "primeng/card";
     imports: [CardModule]
 })
 
-export class CardComponent {}
+export class CardComponent {
+    @Input() header?: string;
+}

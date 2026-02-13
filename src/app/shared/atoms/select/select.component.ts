@@ -1,11 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-
-import { FormsModule } from '@angular/forms';
+import { Component, Input, forwardRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 
-/**
- * Tipo genérico para opção de select
- */
 export interface SelectOption<T = any> {
   label: string;
   value: T;
@@ -15,30 +12,58 @@ export interface SelectOption<T = any> {
 @Component({
   selector: 'app-select',
   standalone: true,
-  imports: [SelectModule, FormsModule],
+  imports: [CommonModule, SelectModule, FormsModule], // ✅ FormsModule é obrigatório pro ngModel
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectComponent),
+      multi: true,
+    },
+  ],
 })
-export class SelectComponent<T = any> {
-  /** Lista de opções */
+export class SelectComponent<T = any> implements ControlValueAccessor {
   @Input() options: SelectOption<T>[] = [];
-
-  /** Valor selecionado */
-  @Input() value?: T;
-
-  /** Placeholder do select */
   @Input() placeholder = 'Selecione uma opção';
-
-  /** Desabilita o select */
   @Input() disabled = false;
-
-  /** Limpa seleção */
   @Input() clearable = false;
 
-  /** Evento disparado ao alterar o valor */
-  @Output() valueChange = new EventEmitter<T>();
+  // para bater com o uso que você quer
+  @Input() inputId?: string;
+  @Input() optionLabel = 'label';
+  @Input() optionValue = 'value';
 
-  onChange(value: T): void {
-    this.valueChange.emit(value);
+  // valor interno ligado ao ngModel do p-select
+  value: T | null = null;
+
+  private onChange: (value: T | null) => void = () => {};
+  private onTouched: () => void = () => {};
+
+  writeValue(value: T | null): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: (value: T | null) => void): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  // chamado quando o p-select muda
+  handleModelChange(value: T | null): void {
+    this.value = value;
+    this.onChange(value);
+    this.onTouched(); // ✅ importante pra required “reconhecer”
+  }
+
+  handleBlur(): void {
+    this.onTouched();
   }
 }

@@ -1,13 +1,14 @@
-<app-card>
+<app-card
+  header="Lista de usuários"
+>
   <app-list 
-  [items]="[
-    { name: 'João Silva', email: 'joao@email.com' },
-    { name: 'Maria Souza', email: 'maria@email.com' },
-  ]" 
-  [columns]="[
-    { label: 'Nome', field: 'name' },
-    { label: 'Email', field: 'email' },
-  ]"
-  actionLabel="Editar"
+    [items]="[
+      { name: 'João Silva', email: 'joao@email.com' },
+      { name: 'Maria Souza', email: 'maria@email.com' },
+    ]" 
+    [columns]="[
+      { label: 'Nome', field: 'name' },
+      { label: 'Email', field: 'email' },
+    ]"
   ></app-list>
 </app-card>
