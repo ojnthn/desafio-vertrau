@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+  <div class="form-grid">
+    @for (field of fields; track field.name) {
+      <app-form-input
+        [label]="field.label"
+        [type]="field.type ?? 'text'"
+        [control]="field.control"
+        [errorMessage]="field.errorMessage ?? 'Campo inválido'"
+      />
+    }
+  </div>
+
+  <div class="form-actions">
+    <app-button
+      variant="secondary"
+      [label]="cancelLabel"
+      (action)="onCancel()"
+    />
+
+    <app-button
+      variant="primary"
+      [label]="submitLabel"
+      [loading]="loading"
+      [disabled]="form.invalid"
+      (action)="onSubmit()"
+    />
+  </div>
+</form>

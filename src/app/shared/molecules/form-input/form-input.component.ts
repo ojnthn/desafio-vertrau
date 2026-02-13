@@ -6,6 +6,15 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { FloatLabelModule } from 'primeng/floatlabel';
 
+export interface FormFieldConfig {
+  name: string;
+  label: string;
+  type?: 'text' | 'post-code' | 'phone';
+  control: FormControl;
+  errorMessage?: string;
+}
+
+
 @Component({
   selector: 'app-form-input',
   standalone: true,
