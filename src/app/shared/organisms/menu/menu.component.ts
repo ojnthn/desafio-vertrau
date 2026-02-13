@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
@@ -17,6 +17,7 @@ type AppMenuNode = {
 })
 export class MenuComponent implements OnInit {
   items: MenuItem[] = [];
+  private router = inject(Router);
 
   private readonly menuSource: AppMenuNode[] = [
     {
@@ -28,8 +29,6 @@ export class MenuComponent implements OnInit {
     },
   ];
 
-  constructor(private readonly router: Router) {}
-
   ngOnInit(): void {
     this.items = this.toMenuItems(this.menuSource);
   }
@@ -38,13 +37,18 @@ export class MenuComponent implements OnInit {
     return nodes.map((n) => {
       const hasChildren = !!n.children?.length;
 
-      return {
+      const item: MenuItem = {
         label: n.label,
         items: hasChildren ? this.toMenuItems(n.children!) : undefined,
-        command: !hasChildren && n.route
-          ? () => this.router.navigate([n.route!])
+        command: n.route
+          ? (event) => {
+              event.originalEvent?.preventDefault?.();
+              this.router.navigate([n.route!]);
+            }
           : undefined,
       };
+
+      return item;
     });
   }
 }

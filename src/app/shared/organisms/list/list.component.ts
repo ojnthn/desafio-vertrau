@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { TableModule } from 'primeng/table';
-import { NgForOf } from "../../../../../node_modules/@angular/common/types/_common_module-chunk";
 
 export interface DataListColumn<T> {
   label: string;

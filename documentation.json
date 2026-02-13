@@ -543,7 +543,7 @@
     "components": [
         {
             "name": "App",
-            "id": "component-App-a32f697a6ba61b189531b3c84a94e92f633cb1ec1f60dc34f55e1fc192a87bb9d18fca0354f8d90e3972c12c75c51c3ed63406935cb72ba4a5dafff327c385df",
+            "id": "component-App-d5df0ccad21f8323f7963cf0db6b006187ea97ad349dd24bd79018ad97d84290198782203b606d16971e0e5029bf9cf23ea5574a6cba8291a928035062bd93c4",
             "file": "src/app/app.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -553,7 +553,7 @@
             "selector": "app-root",
             "styleUrls": [],
             "styles": [],
-            "template": "<app-button\n  label=\"Salvar\"\n  [disabled]=\"false\"\n  severity=\"success\">\n</app-button>\n",
+            "template": "",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -569,7 +569,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17,
+                    "line": 10,
                     "modifierKind": [
                         124,
                         148
@@ -582,19 +582,102 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { ButtonComponent } from './shared/atoms/button/button.component';\n\n@Component({\n  selector: 'app-root',\n  template: ``\n})\nexport class App {\n  protected readonly title = signal('desafio-vertrau');\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-8fd41a71e1d6d179cf53325bfbc7fe8400f88eb377a1385fd0e0e00dc4bac28d6c702b29eef5dd6113f6754fcc8aabf37a82d34c8ee368116d873d05fb60e3ea",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<router-outlet></router-outlet>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
             "imports": [
                 {
-                    "name": "ButtonComponent",
+                    "name": "RouterOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [RouterOutlet],\n  template: `<router-outlet></router-outlet>`,\n})\nexport class AppComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "AppShellComponent",
+            "id": "component-AppShellComponent-cfb0a3f808d9e5b0bee94cf9367969a974c025868f2d470677ad3e6ac212046f0e9e09f61755989fe123a0fe7f51a3d2814e57ed1a61c34900dfa26aff21a41a",
+            "file": "src/app/core/layout/app-shell.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-shell",
+            "styleUrls": [],
+            "styles": [
+                "\n    .page-container {\n      padding: 24px;\n    }\n  "
+            ],
+            "template": "<app-menu></app-menu>\n\n<main class=\"page-container\">\n  <router-outlet></router-outlet>\n</main>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "MenuComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { ButtonComponent } from './shared/atoms/button/button.component';\n\n@Component({\n  selector: 'app-root',\n  imports: [ButtonComponent],\n  template: `\n    <app-button\n      label=\"Salvar\"\n      [disabled]=\"false\"\n      severity=\"success\">\n    </app-button>\n  `\n})\nexport class App {\n  protected readonly title = signal('desafio-vertrau');\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { CommonModule } from '@angular/common';\nimport { MenuComponent } from '../../shared/organisms/menu/menu.component';\n\n@Component({\n  selector: 'app-shell',\n  standalone: true,\n  imports: [CommonModule, RouterOutlet, MenuComponent],\n  template: `\n    <app-menu></app-menu>\n\n    <main class=\"page-container\">\n      <router-outlet></router-outlet>\n    </main>\n  `,\n  styles: [`\n    .page-container {\n      padding: 24px;\n    }\n  `]\n})\nexport class AppShellComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "",
+            "stylesData": "\n    .page-container {\n      padding: 24px;\n    }\n  \n",
             "extends": []
         },
         {
@@ -743,8 +826,8 @@
         },
         {
             "name": "CardComponent",
-            "id": "component-CardComponent-1ecd9cd68273ff2d41906d4dac19589f9f17d7a3f83f4658e8fb83c433fe6daf9fd063cf92cf04fbcf805a5561d4b9869a5232d10900fec4352159c499ebe9a0",
-            "file": "src/app/shared/atoms/card/card.component.ts",
+            "id": "component-CardComponent-474d0eea9a3c0c049cd2134f25bdd8245cfdc4621855cc59465fbeca773da75e6c659b52f173ab2c2e83a06e245060d5d7823ed9f4b0562daa1085dcfc8e750d",
+            "file": "src/app/shared/molecules/card/card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -754,7 +837,7 @@
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./card.component.ts"
+                "./card.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
@@ -767,16 +850,21 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "CardModule",
+                    "type": "module"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from \"@angular/core\";\n\n@Component({\n    selector: 'app-card',\n    standalone: true,\n    templateUrl: './card.component.ts'\n})\n\nexport class CardComponent {}",
+            "sourceCode": "import { Component } from \"@angular/core\";\nimport { CardModule } from \"primeng/card\";\n\n@Component({\n    selector: 'app-card',\n    standalone: true,\n    templateUrl: './card.component.html',\n    imports: [CardModule]\n})\n\nexport class CardComponent {}",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "import { Component } from \"@angular/core\";\n\n@Component({\n    selector: 'app-card',\n    standalone: true,\n    templateUrl: './card.component.ts'\n})\n\nexport class CardComponent {}"
+            "templateData": "<p-card header=\"Simple Card\">\n    <ng-content></ng-content>\n</p-card>\n"
         },
         {
             "name": "FormComponent",
@@ -1042,6 +1130,50 @@
             "templateData": "<div class=\"form-field\">\n  <p-floatLabel>\n    @if (mask) {\n      <p-inputMask\n        [mask]=\"mask\"\n        [formControl]=\"control\"\n        [ngClass]=\"{ 'p-invalid': hasError }\"\n      />\n    } @else {\n      <input\n        pInputText\n        [type]=\"type\"\n        [formControl]=\"control\"\n        [ngClass]=\"{ 'p-invalid': hasError }\"\n      />\n    }\n\n    <label>{{ label }}</label>\n  </p-floatLabel>\n\n  <small *ngIf=\"hasError\" class=\"error\">\n    {{ errorMessage }}\n  </small>\n</div>\n"
         },
         {
+            "name": "HomePage",
+            "id": "component-HomePage-5069165fb1170b855d0b02f598bcc9f6469653ac9b4ae69276d3e9f17f4437a96acacbbf99ee8a9a119b3ca3702c5863faef9d9979e24cd9953d858b7ee2d8f8",
+            "file": "src/app/features/home/pages/home.page.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-home-page",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<app-card>\n  <div card-header>\n    <h2>Home</h2>\n  </div>\n\n  <p>Bem-vindo ao sistema 🚀</p>\n</app-card>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CardComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CardComponent } from '../../../shared/molecules/card/card.component';\n\n@Component({\n  selector: 'app-home-page',\n  standalone: true,\n  imports: [CommonModule, CardComponent],\n  template: `\n    <app-card>\n      <div card-header>\n        <h2>Home</h2>\n      </div>\n\n      <p>Bem-vindo ao sistema 🚀</p>\n    </app-card>\n  `,\n})\nexport class HomePage {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
+        {
             "name": "ListComponent",
             "id": "component-ListComponent-dcc8b346e0fcd6de8a36b8b5a83f0ad1a8636192a91fccece4b50a03089e43e37ddfaa88f262ff7317e6285209aab4aa6292ed8874f5c94a441a4885632ef857",
             "file": "src/app/shared/organisms/list/list.component.ts",
@@ -1128,7 +1260,7 @@
         },
         {
             "name": "MenuComponent",
-            "id": "component-MenuComponent-695e55fda4e8d1c345ddc6842f1de2c3917ae13602d51e89a95f83c3ae404ae12e312bb92734d0cdefb39ba962010d552e250a26bcf2bfa7f5684ffb6d7884cf",
+            "id": "component-MenuComponent-318dcb75689457cb4cbfa1b9a2d0e0a3619d36c5e344874af25e4c38d82dc0043be04fe3437ae789a3180e2291c24522b1f8364ec15b48d31def1ed61fa1fd67",
             "file": "src/app/shared/organisms/menu/menu.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1166,10 +1298,24 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 22,
                     "modifierKind": [
                         123,
                         148
+                    ]
+                },
+                {
+                    "name": "router",
+                    "defaultValue": "inject(Router)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        123
                     ]
                 }
             ],
@@ -1180,7 +1326,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1199,7 +1345,7 @@
                     "optional": false,
                     "returnType": "MenuItem[]",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1234,40 +1380,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { MenuItem } from 'primeng/api';\nimport { MenubarModule } from 'primeng/menubar';\n\ntype AppMenuNode = {\n  label: string;\n  route?: string;\n  children?: AppMenuNode[];\n};\n\n@Component({\n  selector: 'app-menu',\n  standalone: true,\n  templateUrl: './menu.component.html',\n  imports: [MenubarModule],\n})\nexport class MenuComponent implements OnInit {\n  items: MenuItem[] = [];\n\n  private readonly menuSource: AppMenuNode[] = [\n    {\n      label: 'Usuário',\n      children: [\n        { label: 'Cadastro', route: '/usuario/cadastro' },\n        { label: 'Lista', route: '/usuario/lista' },\n      ],\n    },\n  ];\n\n  constructor(private readonly router: Router) {}\n\n  ngOnInit(): void {\n    this.items = this.toMenuItems(this.menuSource);\n  }\n\n  private toMenuItems(nodes: AppMenuNode[]): MenuItem[] {\n    return nodes.map((n) => {\n      const hasChildren = !!n.children?.length;\n\n      return {\n        label: n.label,\n        items: hasChildren ? this.toMenuItems(n.children!) : undefined,\n        command: !hasChildren && n.route\n          ? () => this.router.navigate([n.route!])\n          : undefined,\n      };\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, inject, OnInit } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { MenuItem } from 'primeng/api';\nimport { MenubarModule } from 'primeng/menubar';\n\ntype AppMenuNode = {\n  label: string;\n  route?: string;\n  children?: AppMenuNode[];\n};\n\n@Component({\n  selector: 'app-menu',\n  standalone: true,\n  templateUrl: './menu.component.html',\n  imports: [MenubarModule],\n})\nexport class MenuComponent implements OnInit {\n  items: MenuItem[] = [];\n  private router = inject(Router);\n\n  private readonly menuSource: AppMenuNode[] = [\n    {\n      label: 'Usuário',\n      children: [\n        { label: 'Cadastro', route: '/usuario/cadastro' },\n        { label: 'Lista', route: '/usuario/lista' },\n      ],\n    },\n  ];\n\n  ngOnInit(): void {\n    this.items = this.toMenuItems(this.menuSource);\n  }\n\n  private toMenuItems(nodes: AppMenuNode[]): MenuItem[] {\n    return nodes.map((n) => {\n      const hasChildren = !!n.children?.length;\n\n      const item: MenuItem = {\n        label: n.label,\n        items: hasChildren ? this.toMenuItems(n.children!) : undefined,\n        command: n.route\n          ? (event) => {\n              event.originalEvent?.preventDefault?.();\n              this.router.navigate([n.route!]);\n            }\n          : undefined,\n      };\n\n      return item;\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "router",
-                        "type": "Router",
-                        "optional": false,
-                        "dotDotDotToken": false,
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 29,
-                "jsdoctags": [
-                    {
-                        "name": "router",
-                        "type": "Router",
-                        "optional": false,
-                        "dotDotDotToken": false,
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
             "extends": [],
             "implements": [
                 "OnInit"
@@ -1717,6 +1833,98 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<p-tabs value=\"0\">\n  <p-tablist>\n    @for(tab of tabs; track tab.value) {\n      <p-tab [value]=\"tab.value\">{{ tab.label }}</p-tab>\n    }\n  </p-tablist>\n  <p-tabpanels>\n      @for (tab of tabs; track tab.value) {\n          <p-tabpanel [value]=\"tab.value\">\n              <ng-container \n                *ngComponentOutlet=\"tab.component\"\n              ></ng-container>\n          </p-tabpanel>\n      }\n  </p-tabpanels>\n</p-tabs>"
+        },
+        {
+            "name": "UserListPage",
+            "id": "component-UserListPage-6969448e3bebf55a11e95f0808a5ba7a905e91954b6f180c1f8e504f376cd5b48ccc9622d6d84bed0c7486f8441738694cf118d5e9b7a5f3fd8197152d6ce332",
+            "file": "src/app/features/user/pages/list/user-list.page.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-usuario-lista-page",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./user-list.page.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CardComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CardComponent } from '../../../../shared/molecules/card/card.component';\n\n@Component({\n  selector: 'app-usuario-lista-page',\n  standalone: true,\n  imports: [CommonModule, CardComponent],\n  templateUrl: './user-list.page.html',\n})\nexport class UserListPage {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<app-card>\n  <div card-header class=\"page-header\">\n    <h2 class=\"title\">Lista de usuários</h2>\n  </div>\n</app-card>"
+        },
+        {
+            "name": "UserNewPage",
+            "id": "component-UserNewPage-6f3c0e03a3c971bb618c9f91cd3730cd90b0da467c8c6f4b85668ebaa34e9b598971502edccff095b460c06ec48d0b93ed9569d8bf4412893eaf35ebf7ab1e75",
+            "file": "src/app/features/user/pages/new/user-new.page.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-usuario-novo-page",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./user-new.page.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CardComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CardComponent } from '../../../../shared/molecules/card/card.component';\n\n@Component({\n  selector: 'app-usuario-novo-page',\n  standalone: true,\n  imports: [CommonModule, CardComponent],\n  templateUrl: './user-new.page.html',\n})\nexport class UserNewPage {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<app-card>\n  <div card-header class=\"page-header\">\n    <h2 class=\"title\">Cadastro de usuário</h2>\n  </div>\n</app-card>"
         }
     ],
     "modules": [],
@@ -1733,6 +1941,16 @@
                 "defaultValue": "{\n  providers: [\n    providePrimeNG({\n      theme: {\n        preset: Aura,\n      },\n    }),\n    provideBrowserGlobalErrorListeners(),\n    provideRouter(routes)\n  ]\n}"
             },
             {
+                "name": "HOME_ROUTES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/home/home.routes.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Routes",
+                "defaultValue": "[\n  {\n    path: '',\n    loadComponent: () =>\n      \"import('./pages/home.page').then((m) => m.HomePage)\",\n  },\n]"
+            },
+            {
                 "name": "routes",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1740,7 +1958,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Routes",
-                "defaultValue": "[]"
+                "defaultValue": "[\n  {\n    path: '',\n    loadComponent: () =>\n      \"import('./core/layout/app-shell.component')\\n\\\n        .then(m => m.AppShellComponent)\",\n    children: [\n        {\n            path: '',\n            loadComponent: () =>\n              \"import('./pages/home.page').then((m) => m.HomePage)\",\n          },\n        {\n            path: 'usuario',\n            children: [\n              {\n                path: 'lista',\n                loadComponent: () =>\n                  \"import('./pages/list/user-list.page').then((m) => m.UserListPage)\",\n              },\n              {\n                path: 'cadastro',\n                loadComponent: () => \"import('./pages/new/user-new.page').then((m) => m.UserNewPage)\",\n              }\n            ],\n          }\n    ],\n  },\n\n  { path: '**', redirectTo: '' },\n]"
+            },
+            {
+                "name": "USER_ROUTES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/user/user.routes.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Routes",
+                "defaultValue": "[\n  {\n    path: 'usuario',\n    children: [\n      {\n        path: 'lista',\n        loadComponent: () =>\n          \"import('./pages/list/user-list.page').then((m) => m.UserListPage)\",\n      },\n      {\n        path: 'cadastro',\n        loadComponent: () => \"import('./pages/new/user-new.page').then((m) => m.UserNewPage)\",\n      }\n    ],\n  },\n]"
             }
         ],
         "functions": [],
@@ -1771,6 +1999,18 @@
                     "defaultValue": "{\n  providers: [\n    providePrimeNG({\n      theme: {\n        preset: Aura,\n      },\n    }),\n    provideBrowserGlobalErrorListeners(),\n    provideRouter(routes)\n  ]\n}"
                 }
             ],
+            "src/app/features/home/home.routes.ts": [
+                {
+                    "name": "HOME_ROUTES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/home/home.routes.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Routes",
+                    "defaultValue": "[\n  {\n    path: '',\n    loadComponent: () =>\n      \"import('./pages/home.page').then((m) => m.HomePage)\",\n  },\n]"
+                }
+            ],
             "src/app/app.routes.ts": [
                 {
                     "name": "routes",
@@ -1780,7 +2020,19 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Routes",
-                    "defaultValue": "[]"
+                    "defaultValue": "[\n  {\n    path: '',\n    loadComponent: () =>\n      \"import('./core/layout/app-shell.component')\\n\\\n        .then(m => m.AppShellComponent)\",\n    children: [\n        {\n            path: '',\n            loadComponent: () =>\n              \"import('./pages/home.page').then((m) => m.HomePage)\",\n          },\n        {\n            path: 'usuario',\n            children: [\n              {\n                path: 'lista',\n                loadComponent: () =>\n                  \"import('./pages/list/user-list.page').then((m) => m.UserListPage)\",\n              },\n              {\n                path: 'cadastro',\n                loadComponent: () => \"import('./pages/new/user-new.page').then((m) => m.UserNewPage)\",\n              }\n            ],\n          }\n    ],\n  },\n\n  { path: '**', redirectTo: '' },\n]"
+                }
+            ],
+            "src/app/features/user/user.routes.ts": [
+                {
+                    "name": "USER_ROUTES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/user/user.routes.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Routes",
+                    "defaultValue": "[\n  {\n    path: 'usuario',\n    children: [\n      {\n        path: 'lista',\n        loadComponent: () =>\n          \"import('./pages/list/user-list.page').then((m) => m.UserListPage)\",\n      },\n      {\n        path: 'cadastro',\n        loadComponent: () => \"import('./pages/new/user-new.page').then((m) => m.UserNewPage)\",\n      }\n    ],\n  },\n]"
                 }
             ]
         },
@@ -1805,12 +2057,57 @@
     "routes": {
         "name": "<root>",
         "kind": "module",
-        "children": []
+        "children": [
+            {
+                "name": "usuario",
+                "kind": "route-path",
+                "filename": "src/app/features/user/user.routes.ts"
+            },
+            {
+                "name": "lista",
+                "kind": "route-path",
+                "filename": "src/app/features/user/user.routes.ts"
+            },
+            {
+                "name": "cadastro",
+                "kind": "route-path",
+                "filename": "src/app/features/user/user.routes.ts"
+            },
+            {
+                "name": "usuario",
+                "kind": "route-path",
+                "filename": "src/app/app.routes.ts"
+            },
+            {
+                "name": "lista",
+                "kind": "route-path",
+                "filename": "src/app/app.routes.ts"
+            },
+            {
+                "name": "cadastro",
+                "kind": "route-path",
+                "filename": "src/app/app.routes.ts"
+            },
+            {
+                "name": "**",
+                "kind": "route-path",
+                "filename": "src/app/app.routes.ts"
+            }
+        ]
     },
     "coverage": {
-        "count": 11,
+        "count": 8,
         "status": "low",
         "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
             {
                 "filePath": "src/app/app.config.ts",
                 "type": "variable",
@@ -1841,6 +2138,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/core/layout/app-shell.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppShellComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/core/services/cep/cep.facade.ts",
                 "type": "injectable",
                 "linktype": "injectable",
@@ -1868,21 +2174,59 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/features/home/home.routes.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "HOME_ROUTES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/home/pages/home.page.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HomePage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/user/pages/list/user-list.page.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserListPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/user/pages/new/user-new.page.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserNewPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/user/user.routes.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "USER_ROUTES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/shared/atoms/button/button.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 12,
                 "coverageCount": "1/8",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/atoms/card/card.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "CardComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -1910,6 +2254,15 @@
                 "name": "SplitButtonComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/molecules/card/card.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

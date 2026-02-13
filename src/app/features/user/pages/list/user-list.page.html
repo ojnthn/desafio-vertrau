@@ -1,0 +1,13 @@
+<app-card>
+  <app-list 
+  [items]="[
+    { name: 'João Silva', email: 'joao@email.com' },
+    { name: 'Maria Souza', email: 'maria@email.com' },
+  ]" 
+  [columns]="[
+    { label: 'Nome', field: 'name' },
+    { label: 'Email', field: 'email' },
+  ]"
+  actionLabel="Editar"
+  ></app-list>
+</app-card>

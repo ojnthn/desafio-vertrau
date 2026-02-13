@@ -4,14 +4,7 @@ import { ButtonComponent } from './shared/atoms/button/button.component';
 
 @Component({
   selector: 'app-root',
-  imports: [ButtonComponent],
-  template: `
-    <app-button
-      label="Salvar"
-      [disabled]="false"
-      severity="success">
-    </app-button>
-  `
+  template: ``
 })
 export class App {
   protected readonly title = signal('desafio-vertrau');
