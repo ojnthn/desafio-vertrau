@@ -4,7 +4,7 @@ Este projeto é um template Angular com suporte a **PrimeNG**, usando **Storyboo
 
 ---
 
-## 🔹 Pré-requisitos
+## Pré-requisitos
 
 Antes de começar, certifique-se de ter instalado:
 
@@ -20,7 +20,7 @@ npm install -g @angular/cli
 
 ---
 
-## 🔹 Instalação de dependências
+## Instalação de dependências
 
 No terminal, dentro da pasta do projeto:
 
@@ -38,31 +38,18 @@ Isso vai instalar:
 
 ---
 
-## 🔹 Scripts úteis
-
-O `package.json` deve conter scripts como:
-
-```json
-{
-  "scripts": {
-    "start": "ng serve",
-    "build": "ng build",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
-  }
-}
-```
+## Scripts úteis
 
 * `npm start` → inicia o servidor Angular em `http://localhost:4200`.
 * `npm run storybook` → inicia o Storybook em `http://localhost:6006`.
 
 ---
 
-## 🔹 Debug com VS Code
+## Debug com VS Code
 
 O projeto já possui um `launch.json` configurado. Ele permite iniciar e debugar o Angular ou Storybook diretamente do VS Code.
 
-### ⚡ Chrome Debug (Angular)
+### Chrome Debug (Angular)
 
 * Abre o projeto no Chrome e conecta o debugger.
 * Pré-requisito: servidor Angular rodando (`npm start`).
@@ -88,7 +75,7 @@ Para usar:
 
 ---
 
-### ⚡ Storybook Debug
+### Storybook Debug
 
 * Roda o Storybook em Node.js com debug no VS Code.
 * Configuração:
@@ -118,29 +105,27 @@ Para usar:
 
 ---
 
-## 🔹 Estrutura básica do projeto
+## Estrutura básica do projeto
 
 ```
 /src
   /app
-    /components
-      /shared-components
+    /core
+      /layout
+      /services
+    /features
+      /pages
+        - page-name/
+          - page-name.component.ts
+          - page-name.component.html
+    /shared
+      /atoms
         - component-name/
           - component-name.component.ts
           - component-name.component.html
           - component-name.component.scss
-    /pages
-      - page-name/
-        - page-name.component.ts
-        - page-name.component.html
-  /storybook
-    - main.js
-    - preview.js
+          - component-name.component.spec.ts
+          - component-name.stories.ts
+      /molecules
+      /organisms
 ```
-
----
-
-## 🔹 Observações
-
-* Sempre inicialize `items` ou listas com `[]` para evitar erros em tabelas.
-* Ao usar `@for` no Angular 21, alguns templates do PrimeNG podem não funcionar. Para mensagens de vazio, renderize manualmente fora do `<p-table>`.
