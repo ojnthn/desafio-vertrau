@@ -1,59 +1,146 @@
-# DesafioVertrau
+# Projeto Angular com Storybook
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.3.
+Este projeto é um template Angular com suporte a **PrimeNG**, usando **Storybook** para documentação e testes de componentes.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🔹 Pré-requisitos
 
-```bash
-ng serve
-```
+Antes de começar, certifique-se de ter instalado:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* [Node.js](https://nodejs.org/) (versão >= 18)
+* [npm](https://www.npmjs.com/) (geralmente vem com Node.js)
+* [Angular CLI](https://angular.io/cli) globalmente:
 
 ```bash
-ng generate component component-name
+npm install -g @angular/cli
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+* [VS Code](https://code.visualstudio.com/) (recomendado para debug)
+
+---
+
+## 🔹 Instalação de dependências
+
+No terminal, dentro da pasta do projeto:
 
 ```bash
-ng generate --help
+# Instala todas as dependências do projeto
+npm install
 ```
 
-## Building
+Isso vai instalar:
 
-To build the project run:
+* Angular
+* PrimeNG e suas dependências
+* Storybook e dependências relacionadas
+* Outras bibliotecas usadas pelo projeto
 
-```bash
-ng build
+---
+
+## 🔹 Scripts úteis
+
+O `package.json` deve conter scripts como:
+
+```json
+{
+  "scripts": {
+    "start": "ng serve",
+    "build": "ng build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
+}
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+* `npm start` → inicia o servidor Angular em `http://localhost:4200`.
+* `npm run storybook` → inicia o Storybook em `http://localhost:6006`.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## 🔹 Debug com VS Code
 
-```bash
-ng test
+O projeto já possui um `launch.json` configurado. Ele permite iniciar e debugar o Angular ou Storybook diretamente do VS Code.
+
+### ⚡ Chrome Debug (Angular)
+
+* Abre o projeto no Chrome e conecta o debugger.
+* Pré-requisito: servidor Angular rodando (`npm start`).
+* Configuração:
+
+```json
+{
+  "name": "Chrome Debug",
+  "type": "chrome",
+  "request": "launch",
+  "url": "http://localhost:4200",
+  "preLaunchTask": "npm: start",
+  "webRoot": "${workspaceFolder}",
+  "sourceMaps": true
+}
 ```
 
-## Running end-to-end tests
+Para usar:
 
-For end-to-end (e2e) testing, run:
+1. Abra o painel de **Run and Debug** no VS Code.
+2. Selecione `Chrome Debug`.
+3. Clique em **Start Debugging (F5)**.
 
-```bash
-ng e2e
+---
+
+### ⚡ Storybook Debug
+
+* Roda o Storybook em Node.js com debug no VS Code.
+* Configuração:
+
+```json
+{
+  "name": "Storybook",
+  "type": "node",
+  "request": "launch",
+  "runtimeExecutable": "npm",
+  "runtimeArgs": ["run", "storybook"],
+  "cwd": "${workspaceFolder}",
+  "console": "integratedTerminal",
+  "skipFiles": ["<node_internals>/**"],
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Para usar:
 
-## Additional Resources
+1. Abra o painel de **Run and Debug** no VS Code.
+2. Selecione `Storybook`.
+3. Clique em **Start Debugging (F5)**.
+4. O Storybook será aberto em `http://localhost:6006`.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 🔹 Estrutura básica do projeto
+
+```
+/src
+  /app
+    /components
+      /shared-components
+        - component-name/
+          - component-name.component.ts
+          - component-name.component.html
+          - component-name.component.scss
+    /pages
+      - page-name/
+        - page-name.component.ts
+        - page-name.component.html
+  /storybook
+    - main.js
+    - preview.js
+```
+
+---
+
+## 🔹 Observações
+
+* Sempre inicialize `items` ou listas com `[]` para evitar erros em tabelas.
+* Ao usar `@for` no Angular 21, alguns templates do PrimeNG podem não funcionar. Para mensagens de vazio, renderize manualmente fora do `<p-table>`.

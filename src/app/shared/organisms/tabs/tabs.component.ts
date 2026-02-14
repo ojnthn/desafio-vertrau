@@ -14,7 +14,6 @@ export interface TabItem {
   standalone: true,
   imports: [CommonModule, TabsModule],
   templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.scss'],
 })
 export class TabsComponent {
   @Input() tabs: TabItem[] = [];

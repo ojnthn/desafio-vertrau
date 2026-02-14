@@ -6,8 +6,6 @@ import { LocalDbService } from '../../../../core/services/local-storage-db/local
 export interface UserLocalDatasource {
     save(user: UserNewModel): UserModel;
     findAll(): UserModel[];
-    delete(id: string): void;
-    update(user: UserModel): void;
 }
 
 export const USER_LOCAL_DATASOURCE =
@@ -21,10 +19,6 @@ export class UserLocalDatasourceImpl implements UserLocalDatasource {
   constructor(
     private storage: LocalDbService
   ) {}
-
-  update(data: UserModel): void {
-    this.storage.update(this.KEY, data);
-  }
 
   save(post: UserNewModel): UserModel {
     const created = new UserModel(
@@ -47,9 +41,5 @@ export class UserLocalDatasourceImpl implements UserLocalDatasource {
 
   findAll(): UserModel[] {
     return this.storage.getAll(this.KEY);
-  }
-
-  delete(id: string): void {
-    this.storage.delete(this.KEY, id);
   }
 }

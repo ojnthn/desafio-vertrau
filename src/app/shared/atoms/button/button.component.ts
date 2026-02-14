@@ -1,11 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 
-/**
- * Botão base da aplicação
- *
- * Baseado em PrimeNG e usado como átomo no Design System.
- */
 @Component({
   selector: 'app-button',
   standalone: true,

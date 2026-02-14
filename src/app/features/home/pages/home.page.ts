@@ -12,7 +12,7 @@ import { CardComponent } from '../../../shared/molecules/card/card.component';
         <h2>Home</h2>
       </div>
 
-      <p>Bem-vindo ao sistema 🚀</p>
+      <p>Bem-vindo ao sistema</p>
     </app-card>
   `,
 })

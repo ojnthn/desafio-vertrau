@@ -28,7 +28,7 @@ export class SelectComponent<T = any> implements ControlValueAccessor {
   @Input() options: SelectOption<T>[] = [];
   @Input() disabled = false;
   @Input() label?: string;
-  @Input() required = false; // ✅ Novo
+  @Input() required = false;
 
   value: T | null = null;
   touched = false;

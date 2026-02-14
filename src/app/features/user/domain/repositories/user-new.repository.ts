@@ -17,8 +17,6 @@ export const USER_REPOSITORY =
 export interface UserRepository {
   save(user: UserNewEntity): UserEntity;
   findAll(): UserEntity[];
-  update(user: UserEntity): void;
-  delete(id: string): void;
 }
 
 @Injectable()
@@ -39,11 +37,5 @@ export class UserRepositoryImpl implements UserRepository {
     return this.datasource
       .findAll()
       .map(model => UserModel.toEntity(model));
-  }
-
-  update(entity: UserEntity): void {}
-
-  delete(id: string): void {
-    this.datasource.delete(id);
   }
 }
