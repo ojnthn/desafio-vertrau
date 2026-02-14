@@ -11,6 +11,7 @@ import { UserNewStore } from '../../store/user-new.store';
 import { SelectModule } from 'primeng/select';
 import { SelectComponent } from "../../../../../../shared/atoms/select/select.component";
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from "../../../../../../shared/organisms/form/form.component";
 
 @Component({
   selector: 'app-user-data-tab',
@@ -23,8 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonModule,
     FloatLabelModule,
     SelectComponent,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+],
   templateUrl: './user-data-tab.component.html',
 })
 export class UserDataTabComponent {

@@ -9,6 +9,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { UserNewStore } from '../../store/user-new.store';
+import { ButtonComponent } from '../../../../../../shared/atoms/button/button.component';
 
 @Component({
   selector: 'app-user-address-tab',
@@ -20,6 +21,7 @@ import { UserNewStore } from '../../store/user-new.store';
     ButtonModule,
     FloatLabelModule,
     InputTextModule,
+    ButtonComponent
   ],
   templateUrl: './user-address-tab.component.html',
 })
@@ -34,5 +36,9 @@ export class UserAddressTabComponent {
     if (this.store.canSave()) {
       window.dispatchEvent(new CustomEvent('user-new:save'));
     }
+  }
+
+  get isLoading(): boolean {
+    return this.store.isLoading;
   }
 }

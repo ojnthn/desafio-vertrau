@@ -6,13 +6,6 @@ const meta: Meta<SelectComponent> = {
   component: SelectComponent,
   tags: ['autodocs'],
   argTypes: {
-    placeholder: {
-      action: 'placeholder',
-      description: 'Define um placeholder para ser exibido ao usuário',
-      table: {
-        category: 'Behaviour'
-      }
-    },
     options: {
       action: 'options',
       description: 'Lista de itens a ser exibido para seleção',
@@ -28,7 +21,7 @@ type Story = StoryObj<SelectComponent>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Selecione uma opção',
+    label: 'Opções',
     options: [
       { label: 'Opção 1', value: 1 },
       { label: 'Opção 2', value: 2 },

@@ -12,7 +12,7 @@ const meta: Meta<ListComponent<any>> = {
       imports: [
         CommonModule,
         ButtonModule,
-        ListComponent, // como é standalone
+        ListComponent,
       ],
     }),
   ],

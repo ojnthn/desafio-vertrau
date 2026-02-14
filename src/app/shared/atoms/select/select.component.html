@@ -1,12 +1,15 @@
-<p-select
-  [inputId]="inputId"
-  [options]="options"
-  [optionLabel]="optionLabel"
-  [optionValue]="optionValue"
-  [placeholder]="placeholder"
-  [disabled]="disabled"
-  [showClear]="clearable"
-  [(ngModel)]="value"
-  (ngModelChange)="handleModelChange($event)"
-  (onBlur)="handleBlur()"
-></p-select>
+<div class="card w-full">
+  <div>
+    <p-floatlabel variant="in">
+      <p-select
+        fluid
+        [options]="options"
+        [disabled]="disabled"
+        [(ngModel)]="value"
+        (ngModelChange)="handleModelChange($event)"
+        (onBlur)="handleBlur()"
+      ></p-select>
+      <label>{{ label }}</label>
+    </p-floatlabel>
+  </div>
+</div>

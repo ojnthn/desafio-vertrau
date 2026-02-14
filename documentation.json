@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "CepResponseModel",
-            "id": "interface-CepResponseModel-fd350523cb609a4464a1d77f4206ed25e545c9c8cc7ec8d020c0d6b18949b972f27371f3c0493bf8090d651900d6de01ce9808dfbff0723c45172e73ffc62fb8",
+            "id": "interface-CepResponseModel-5f3386486945efac838ebef8d806552108026319c8daf114e9ee7377eaf287357129113ba7556282b27c92d067cdd437455ffd157a368b2b4e249c7af8355f0d",
             "file": "src/app/core/services/cep/cep.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface CepResponseModel {\n    estado: string;\n    logradouro: string;\n    bairro: string;\n}",
+            "sourceCode": "export interface CepResponseModel {\n    uf: string;\n    logradouro: string;\n    bairro: string;\n    erro?: boolean;\n}",
             "properties": [
                 {
                     "name": "bairro",
@@ -21,14 +21,14 @@
                     "line": 4
                 },
                 {
-                    "name": "estado",
+                    "name": "erro",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
+                    "type": "boolean",
                     "indexKey": "",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
-                    "line": 2
+                    "line": 5
                 },
                 {
                     "name": "logradouro",
@@ -39,6 +39,16 @@
                     "optional": false,
                     "description": "",
                     "line": 3
+                },
+                {
+                    "name": "uf",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
                 }
             ],
             "indexSignatures": [],
@@ -48,12 +58,12 @@
         },
         {
             "name": "DataListAction",
-            "id": "interface-DataListAction-dc84cc61fb873128199274dc9fe1267bec202d917aca5ec24fd445d1903fa07a7dd4c1eebdc91c1c0df010e59119b98927c4f2feae40b897431efd9630a595b0",
+            "id": "interface-DataListAction-8ecbdc309f7b6e25abf219353acca5fadd01e89cdf94e3a75628f9be7598db9a3d85d18c40df08c9a4e02fb68bd4a555357240cbfdfd47689e978011e9df6cf3",
             "file": "src/app/shared/organisms/list/list.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent<T> {\n\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\n\nexport class ListComponent<T> {\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
             "properties": [
                 {
                     "name": "icon",
@@ -93,12 +103,12 @@
         },
         {
             "name": "DataListColumn",
-            "id": "interface-DataListColumn-dc84cc61fb873128199274dc9fe1267bec202d917aca5ec24fd445d1903fa07a7dd4c1eebdc91c1c0df010e59119b98927c4f2feae40b897431efd9630a595b0",
+            "id": "interface-DataListColumn-8ecbdc309f7b6e25abf219353acca5fadd01e89cdf94e3a75628f9be7598db9a3d85d18c40df08c9a4e02fb68bd4a555357240cbfdfd47689e978011e9df6cf3",
             "file": "src/app/shared/organisms/list/list.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent<T> {\n\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\n\nexport class ListComponent<T> {\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
             "properties": [
                 {
                     "name": "field",
@@ -203,12 +213,12 @@
         },
         {
             "name": "SelectOption",
-            "id": "interface-SelectOption-e17d1973c08b571dec5344321eab60f2599deb43d94821efcb9626adfdb0585b1559edaaf589fcd16e42e7063749feb502073f7b86936ccc3afba540084afaf3",
+            "id": "interface-SelectOption-b915502dcfba562cea81962de50c95e64702901c0e15fa1591f66b35bf90322d541fe65720d2ed6c425c6f5aff27ef13809d1346fdccf0e2e1268d4de6241cbc",
             "file": "src/app/shared/atoms/select/select.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\nimport { FormsModule } from '@angular/forms';\nimport { SelectModule } from 'primeng/select';\n\n/**\n * Tipo genérico para opção de select\n */\nexport interface SelectOption<T = any> {\n  label: string;\n  value: T;\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-select',\n  standalone: true,\n  imports: [SelectModule, FormsModule],\n  templateUrl: './select.component.html',\n  styleUrls: ['./select.component.scss'],\n})\nexport class SelectComponent<T = any> {\n  /** Lista de opções */\n  @Input() options: SelectOption<T>[] = [];\n\n  /** Valor selecionado */\n  @Input() value?: T;\n\n  /** Placeholder do select */\n  @Input() placeholder = 'Selecione uma opção';\n\n  /** Desabilita o select */\n  @Input() disabled = false;\n\n  /** Limpa seleção */\n  @Input() clearable = false;\n\n  /** Evento disparado ao alterar o valor */\n  @Output() valueChange = new EventEmitter<T>();\n\n  onChange(value: T): void {\n    this.valueChange.emit(value);\n  }\n}\n",
+            "sourceCode": "import { Component, Input, forwardRef } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';\nimport { SelectModule } from 'primeng/select';\nimport { FloatLabel } from \"primeng/floatlabel\";\n\nexport interface SelectOption<T = any> {\n  label: string;\n  value: T;\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-select',\n  standalone: true,\n  imports: [CommonModule, SelectModule, FormsModule, FloatLabel],\n  templateUrl: './select.component.html',\n  styleUrls: ['./select.component.scss'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SelectComponent),\n      multi: true,\n    },\n  ],\n})\nexport class SelectComponent<T = any> implements ControlValueAccessor {\n  @Input() options: SelectOption<T>[] = [];\n  @Input() disabled = false;\n  @Input() label?: string;\n\n  value: T | null = null;\n\n  private onChange: (value: T | null) => void = () => {};\n  private onTouched: () => void = () => {};\n\n  writeValue(value: T | null): void {\n    this.value = value;\n  }\n\n  registerOnChange(fn: (value: T | null) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n  \n  handleModelChange(value: T | null): void {\n    this.value = value;\n    this.onChange(value);\n    this.onTouched();\n  }\n\n  handleBlur(): void {\n    this.onTouched();\n  }\n}\n",
             "properties": [
                 {
                     "name": "disabled",
@@ -218,7 +228,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 12
+                    "line": 10
                 },
                 {
                     "name": "label",
@@ -228,7 +238,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 10
+                    "line": 8
                 },
                 {
                     "name": "value",
@@ -238,24 +248,22 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 11
+                    "line": 9
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
-            "description": "<p>Tipo genérico para opção de select</p>\n",
-            "rawdescription": "\n\nTipo genérico para opção de select\n",
             "methods": [],
             "extends": []
         },
         {
             "name": "TabItem",
-            "id": "interface-TabItem-79cbb1d35d8e52ff440bea91894d41060ff20b091849caa38bc03f1167086e9d820e274434cc4d87f667bd37c5cbfc465c6271a810130e5ee91f8501c99e7feb",
+            "id": "interface-TabItem-8be19058f110a09d5dc5def0fb02b1f17910cb3a4fddb1bfa9c386cfc854504d96519d5f65f26cfbf5bfc345aec28294671e59a6b7a674fdf744256b714c5065",
             "file": "src/app/shared/organisms/tabs/tabs.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input, SimpleChanges, Type } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TabsModule } from 'primeng/tabs';\n\nexport interface TabItem {\n  value: string;\n\n  /** Título da aba */\n  label: string;\n\n  /** Componente Angular a ser renderizado dentro da aba */\n  component: Type<any>;\n\n  /** Opcional: desabilita a aba */\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-tabs',\n  standalone: true,\n  imports: [CommonModule, TabsModule],\n  templateUrl: './tabs.component.html',\n  styleUrls: ['./tabs.component.scss'],\n})\nexport class TabsComponent {\n  /** Lista de abas */\n  @Input() tabs: TabItem[] = [];\n\n  /** Aba ativa */\n  activeIndex = 1;\n\n  /** Seleciona aba ativa */\n  selectTab(index: number) {\n    if (this.tabs[index]?.disabled) return;\n    this.activeIndex = index;\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (changes['tabs'] && this.tabs.length > 0 && this.activeIndex === null) {\n      // Define a primeira aba como ativa assim que o array de tabs estiver disponível\n      this.activeIndex = 0;\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, Input, SimpleChanges, Type } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TabsModule } from 'primeng/tabs';\n\nexport interface TabItem {\n  value: string;\n  label: string;\n  component: Type<any>;\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-tabs',\n  standalone: true,\n  imports: [CommonModule, TabsModule],\n  templateUrl: './tabs.component.html',\n  styleUrls: ['./tabs.component.scss'],\n})\nexport class TabsComponent {\n  @Input() tabs: TabItem[] = [];\n  @Input() activeIndex = 0;\n\n  selectTab(index: number) {\n    if (this.tabs[index]?.disabled) return;\n    this.activeIndex = index;\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (changes['tabs'] && this.tabs.length > 0 && this.activeIndex == null) {\n      this.activeIndex = 0;\n    }\n  }\n\n  get activeTab(): TabItem | null {\n    return this.tabs[this.activeIndex] ?? null;\n  }\n}\n",
             "properties": [
                 {
                     "name": "component",
@@ -264,9 +272,8 @@
                     "type": "Type<any>",
                     "indexKey": "",
                     "optional": false,
-                    "description": "<p>Componente Angular a ser renderizado dentro da aba</p>\n",
-                    "line": 12,
-                    "rawdescription": "\nComponente Angular a ser renderizado dentro da aba"
+                    "description": "",
+                    "line": 8
                 },
                 {
                     "name": "disabled",
@@ -275,9 +282,8 @@
                     "type": "boolean",
                     "indexKey": "",
                     "optional": true,
-                    "description": "<p>Opcional: desabilita a aba</p>\n",
-                    "line": 15,
-                    "rawdescription": "\nOpcional: desabilita a aba"
+                    "description": "",
+                    "line": 9
                 },
                 {
                     "name": "label",
@@ -286,9 +292,8 @@
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
-                    "description": "<p>Título da aba</p>\n",
-                    "line": 9,
-                    "rawdescription": "\nTítulo da aba"
+                    "description": "",
+                    "line": 7
                 },
                 {
                     "name": "value",
@@ -310,7 +315,7 @@
     "injectables": [
         {
             "name": "CepFacade",
-            "id": "injectable-CepFacade-50364234341101042fd1c267ffbaff22daf233940dbf9798ef7610b8608b4d23378f702a56650729f09d71a0e3223b46bcee67b92269431edf0dee3ed046a476",
+            "id": "injectable-CepFacade-3d000d4d549a7230bd02b354b89cff06810f563d1adfd1c3ae42096b8a92e454d0d1ec42b2869f1e4d048e19b2e1c845b575bd8ce26a10f2cca62c44de0a27a9",
             "file": "src/app/core/services/cep/cep.facade.ts",
             "properties": [],
             "methods": [
@@ -424,7 +429,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CepService } from './cep.service';\nimport { filter } from 'rxjs';\n\n@Injectable({ providedIn: 'root' })\nexport class CepFacade {\n  constructor(private cepService: CepService) {}\n\n  bindCepLookup(\n    form: FormGroup,\n    cepControlName: string\n  ): void {\n    const cepControl = form.get(cepControlName);\n\n    if (!cepControl) return;\n\n    cepControl.valueChanges\n      .pipe(\n        filter((value: string) => value?.replace(/\\D/g, '').length === 8)\n      )\n      .subscribe((cep) => {\n        this.lookupCep(form, cep);\n      });\n  }\n\n  private lookupCep(form: FormGroup, cep: string): void {\n    this.cepService.getCep(cep).subscribe({\n      next: (data) => {\n        form.patchValue({\n          street: data.logradouro,\n          neighborhood: data.bairro,\n          state: data.estado\n        });\n      },\n      error: () => {\n        form.get('cep')?.setErrors({ invalidCep: true });\n      },\n    });\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CepService } from './cep.service';\nimport { filter } from 'rxjs';\n\n@Injectable({ providedIn: 'root' })\nexport class CepFacade {\n  constructor(private cepService: CepService) {}\n\n  bindCepLookup(\n    form: FormGroup,\n    cepControlName: string\n  ): void {\n    const cepControl = form.get(cepControlName);\n\n    if (!cepControl) return;\n\n    cepControl.valueChanges\n      .pipe(\n        filter((value: string) => value?.replace(/\\D/g, '').length === 8)\n      )\n      .subscribe((cep) => {\n        this.lookupCep(form, cep);\n      });\n  }\n\n  private lookupCep(form: FormGroup, cep: string): void {\n    this.cepService.getData(cep).subscribe({\n      next: (data) => {\n        form.patchValue({\n          street: data.logradouro,\n          neighborhood: data.bairro,\n          state: data.uf\n        });\n      },\n      error: () => {\n        form.get('cep')?.setErrors({ invalidCep: true });\n      },\n    });\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -460,12 +465,12 @@
         },
         {
             "name": "CepService",
-            "id": "injectable-CepService-8bccee9ddd88d2e82a39cb5f2fa433a690e6671f02aefca5ae20e64b851d36a8ae9b98e8713976bd3cad0306ee93b040c8f98a918e660fea41aa35a21ec2371f",
+            "id": "injectable-CepService-3e4a486a81aca216ef60b317d62ff3f54b1a1f93a5a041eba63c395d5cbe7ffeb1e95e70135d95ab4d35b6fd0d0c8a41549f68f6b57bb61e639f2b4a913bdf14",
             "file": "src/app/core/services/cep/cep.service.ts",
             "properties": [],
             "methods": [
                 {
-                    "name": "getCep",
+                    "name": "getData",
                     "args": [
                         {
                             "name": "cep",
@@ -501,7 +506,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { CepResponseModel } from './cep.model';\n\n@Injectable({ providedIn: 'root' })\nexport class CepService {\n  constructor(private http: HttpClient) {}\n\n  getCep(cep: string): Observable<CepResponseModel> {\n    const normalizedCep = cep.replace(/\\D/g, '');\n    return this.http.get<CepResponseModel>(\n      `https://viacep.com.br/ws/${normalizedCep}/json/`\n    );\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { CepResponseModel } from './cep.model';\n\n@Injectable({ providedIn: 'root' })\nexport class CepService {\n  constructor(private http: HttpClient) {}\n\n  getData(cep: string): Observable<CepResponseModel> {\n    const onlyDigits = cep.replace(/\\D/g, '');\n    return this.http.get<CepResponseModel>(`https://viacep.com.br/ws/${onlyDigits}/json/`);\n  }\n}\n\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -531,6 +536,287 @@
                         }
                     }
                 ]
+            },
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "UserNewStore",
+            "id": "injectable-UserNewStore-1f49691814c394646251ccc669a6ddc820092e4c9892c328e08da447b31d1f6ea6e850e4165fbd443033b63d39055e72d9fd578e29abf67d21008513761d1062",
+            "file": "src/app/features/user/pages/new/store/user-new.store.ts",
+            "properties": [
+                {
+                    "name": "destroy$",
+                    "defaultValue": "new Subject<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "form",
+                    "defaultValue": "new FormGroup({\n    firstName: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    lastName: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    gender: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n\n    cep: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    state: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    street: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    neighborhood: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    number: new FormControl('', {\n      nonNullable: true,\n      validators: [Validators.required, Validators.pattern(/^\\d+$/)],\n    }),\n    complement: new FormControl('', { nonNullable: true }),\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "methods": [
+                {
+                    "name": "canGoNext",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 65,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "canSave",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 72,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "destroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 91,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getSummary",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 87,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "initCepLookup",
+                    "args": [
+                        {
+                            "name": "onInvalidCep",
+                            "type": "function",
+                            "optional": true,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        },
+                        {
+                            "name": "onError",
+                            "type": "function",
+                            "optional": true,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "onInvalidCep",
+                            "type": "function",
+                            "optional": true,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "onError",
+                            "type": "function",
+                            "optional": true,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onlyDigitsForNumber",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 82,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { FormControl, FormGroup, Validators } from '@angular/forms';\nimport { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';\nimport { Subject, takeUntil } from 'rxjs';\nimport { CepService } from '../../../../../core/services/cep/cep.service';\n\n\n\n@Injectable()\nexport class UserNewStore {\n  private destroy$ = new Subject<void>();\n\n  form = new FormGroup({\n    firstName: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    lastName: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    gender: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n\n    cep: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    state: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    street: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    neighborhood: new FormControl('', { nonNullable: true, validators: [Validators.required] }),\n    number: new FormControl('', {\n      nonNullable: true,\n      validators: [Validators.required, Validators.pattern(/^\\d+$/)],\n    }),\n    complement: new FormControl('', { nonNullable: true }),\n  });\n\n  get firstName() { return this.form.controls.firstName; }\n  get lastName() { return this.form.controls.lastName; }\n  get gender() { return this.form.controls.gender; }\n\n  get cep() { return this.form.controls.cep; }\n  get state() { return this.form.controls.state; }\n  get street() { return this.form.controls.street; }\n  get neighborhood() { return this.form.controls.neighborhood; }\n  get number() { return this.form.controls.number; }\n  get complement() { return this.form.controls.complement; }\n\n  constructor(private cepService: CepService) {}\n\n  initCepLookup(onInvalidCep?: () => void, onError?: () => void) {\n    this.cep.valueChanges\n      .pipe(\n        takeUntil(this.destroy$),\n        debounceTime(300),\n        distinctUntilChanged(),\n        filter((value) => value.replace(/\\D/g, '').length === 8),\n        switchMap((value) => this.cepService.getData(value))\n      )\n      .subscribe({\n        next: (res) => {\n          if (res.erro) {\n            onInvalidCep?.();\n            return;\n          }\n          this.state.setValue(res.uf ?? '');\n          this.street.setValue(res.logradouro ?? '');\n          this.neighborhood.setValue(res.bairro ?? '');\n        },\n        error: () => onError?.(),\n      });\n  }\n\n  canGoNext(): boolean {\n    this.firstName.markAsTouched();\n    this.lastName.markAsTouched();\n    this.gender.markAsTouched();\n    return !(this.firstName.invalid || this.lastName.invalid || this.gender.invalid);\n  }\n\n  canSave(): boolean {\n    this.cep.markAsTouched();\n    this.state.markAsTouched();\n    this.street.markAsTouched();\n    this.neighborhood.markAsTouched();\n    this.number.markAsTouched();\n\n    return !(this.cep.invalid || this.state.invalid || this.street.invalid || this.neighborhood.invalid || this.number.invalid);\n  }\n\n  onlyDigitsForNumber(value: string) {\n    const only = value.replace(/\\D/g, '');\n    if (only !== value) this.number.setValue(only);\n  }\n\n  getSummary() {\n    return this.form.getRawValue();\n  }\n\n  destroy() {\n    this.destroy$.next();\n    this.destroy$.complete();\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "cepService",
+                        "type": "CepService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 38,
+                "jsdoctags": [
+                    {
+                        "name": "cepService",
+                        "type": "CepService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "firstName": {
+                    "name": "firstName",
+                    "getSignature": {
+                        "name": "firstName",
+                        "type": "",
+                        "returnType": "",
+                        "line": 29
+                    }
+                },
+                "lastName": {
+                    "name": "lastName",
+                    "getSignature": {
+                        "name": "lastName",
+                        "type": "",
+                        "returnType": "",
+                        "line": 30
+                    }
+                },
+                "gender": {
+                    "name": "gender",
+                    "getSignature": {
+                        "name": "gender",
+                        "type": "",
+                        "returnType": "",
+                        "line": 31
+                    }
+                },
+                "cep": {
+                    "name": "cep",
+                    "getSignature": {
+                        "name": "cep",
+                        "type": "",
+                        "returnType": "",
+                        "line": 33
+                    }
+                },
+                "state": {
+                    "name": "state",
+                    "getSignature": {
+                        "name": "state",
+                        "type": "",
+                        "returnType": "",
+                        "line": 34
+                    }
+                },
+                "street": {
+                    "name": "street",
+                    "getSignature": {
+                        "name": "street",
+                        "type": "",
+                        "returnType": "",
+                        "line": 35
+                    }
+                },
+                "neighborhood": {
+                    "name": "neighborhood",
+                    "getSignature": {
+                        "name": "neighborhood",
+                        "type": "",
+                        "returnType": "",
+                        "line": 36
+                    }
+                },
+                "number": {
+                    "name": "number",
+                    "getSignature": {
+                        "name": "number",
+                        "type": "",
+                        "returnType": "",
+                        "line": 37
+                    }
+                },
+                "complement": {
+                    "name": "complement",
+                    "getSignature": {
+                        "name": "complement",
+                        "type": "",
+                        "returnType": "",
+                        "line": 38
+                    }
+                }
             },
             "extends": [],
             "type": "injectable"
@@ -1136,7 +1422,7 @@
                     }
                 }
             },
-            "templateData": "<div class=\"form-field\">\n  <p-floatLabel>\n    @if (mask) {\n      <p-inputMask\n        [mask]=\"mask\"\n        [formControl]=\"control\"\n        [ngClass]=\"{ 'p-invalid': hasError }\"\n      />\n    } @else {\n      <input\n        pInputText\n        [type]=\"type\"\n        [formControl]=\"control\"\n        [ngClass]=\"{ 'p-invalid': hasError }\"\n      />\n    }\n\n    <label>{{ label }}</label>\n  </p-floatLabel>\n\n  <small *ngIf=\"hasError\" class=\"error\">\n    {{ errorMessage }}\n  </small>\n</div>\n"
+            "templateData": "<div class=\"card flex justify-center\">\n  <p-floatLabel variant=\"in\">\n    @if (mask) {\n      <p-inputMask\n        [mask]=\"mask\"\n        [formControl]=\"control\"\n        [ngClass]=\"{ 'p-invalid': hasError }\"\n      />\n    } @else {\n      <input\n        pInputText\n        [type]=\"type\"\n        [formControl]=\"control\"\n        [ngClass]=\"{ 'p-invalid': hasError }\"\n      />\n    }\n\n    <label>{{ label }}</label>\n  </p-floatLabel>\n\n  <small *ngIf=\"hasError\" class=\"error\">\n    {{ errorMessage }}\n  </small>\n</div>\n"
         },
         {
             "name": "HomePage",
@@ -1184,7 +1470,7 @@
         },
         {
             "name": "ListComponent",
-            "id": "component-ListComponent-dc84cc61fb873128199274dc9fe1267bec202d917aca5ec24fd445d1903fa07a7dd4c1eebdc91c1c0df010e59119b98927c4f2feae40b897431efd9630a595b0",
+            "id": "component-ListComponent-8ecbdc309f7b6e25abf219353acca5fadd01e89cdf94e3a75628f9be7598db9a3d85d18c40df08c9a4e02fb68bd4a555357240cbfdfd47689e978011e9df6cf3",
             "file": "src/app/shared/organisms/list/list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1206,7 +1492,7 @@
                     "name": "action",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "function",
                     "decorators": []
                 },
@@ -1215,7 +1501,7 @@
                     "defaultValue": "'Ação'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 27,
                     "type": "string",
                     "decorators": []
                 },
@@ -1224,7 +1510,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 26,
                     "type": "Array<literal type>",
                     "decorators": []
                 },
@@ -1233,7 +1519,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 25,
                     "type": "T[]",
                     "decorators": []
                 }
@@ -1255,7 +1541,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\nexport class ListComponent<T> {\n\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { TableModule } from 'primeng/table';\n\nexport interface DataListColumn<T> {\n  label: string;\n  field: keyof T;\n  width?: string;\n}\n\nexport interface DataListAction<T> {\n  label: string;\n  icon?: string;\n  onClick: (item: T) => void;\n}\n\n@Component({\n  selector: 'app-list',\n  standalone: true,\n  imports: [TableModule],\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.scss'],\n})\n\nexport class ListComponent<T> {\n  @Input() items: T[] = [];\n  @Input() columns: Array<{ label: string; field: keyof T }> = [];\n  @Input() actionLabel = 'Ação';\n  @Input() action!: (item: T) => void;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1265,7 +1551,7 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"card\">\n  <p-table\n    [value]=\"items\"\n    [tableStyle]=\"{ 'min-width': '50rem' }\"\n  >\n    <!-- HEADER -->\n    <ng-template pTemplate=\"header\">\n      <tr>\n        @for (col of columns; track col.label) {\n          <th>{{ col.label }}</th>\n        }\n        <th></th>\n      </tr>\n    </ng-template>\n\n    <ng-template pTemplate=\"body\" let-rowData>\n      <tr>\n        @for (col of columns; track col.label) {\n          <td>\n            {{ rowData[col.field] }}\n          </td>\n        }\n\n        <td class=\"action-cell\">\n          \n        </td>\n      </tr>\n    </ng-template>\n\n    <!-- EMPTY STATE -->\n    <ng-template pTemplate=\"emptymessage\">\n      <tr>\n        <td [attr.colspan]=\"columns.length + 1\">\n          Nenhum registro encontrado\n        </td>\n      </tr>\n    </ng-template>\n\n  </p-table>\n</div>\n"
+            "templateData": "<div class=\"card\">\n  <p-table\n    [value]=\"items\"\n    [tableStyle]=\"{ 'min-width': '50rem' }\"\n  >\n    <ng-template pTemplate=\"header\">\n      <tr>\n        @for (col of columns; track col.label) {\n          <th>{{ col.label }}</th>\n        }\n        <th></th>\n      </tr>\n    </ng-template>\n\n    <ng-template pTemplate=\"body\" let-rowData>\n      <tr>\n        @for (col of columns; track col.label) {\n          <td>\n            {{ rowData[col.field] }}\n          </td>\n        }\n\n        <td class=\"action-cell\">\n          \n        </td>\n      </tr>\n    </ng-template>\n\n    <ng-template pTemplate=\"emptymessage\">\n      <tr>\n        <td [attr.colspan]=\"columns.length + 1\">\n          Nenhum registro encontrado\n        </td>\n      </tr>\n    </ng-template>\n\n  </p-table>\n</div>\n"
         },
         {
             "name": "MenuComponent",
@@ -1401,13 +1687,17 @@
         },
         {
             "name": "SelectComponent",
-            "id": "component-SelectComponent-e17d1973c08b571dec5344321eab60f2599deb43d94821efcb9626adfdb0585b1559edaaf589fcd16e42e7063749feb502073f7b86936ccc3afba540084afaf3",
+            "id": "component-SelectComponent-b915502dcfba562cea81962de50c95e64702901c0e15fa1591f66b35bf90322d541fe65720d2ed6c425c6f5aff27ef13809d1346fdccf0e2e1268d4de6241cbc",
             "file": "src/app/shared/atoms/select/select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": ")"
+                }
+            ],
             "selector": "app-select",
             "styleUrls": [
                 "./select.component.scss"
@@ -1420,25 +1710,20 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "clearable",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nLimpa seleção",
-                    "description": "<p>Limpa seleção</p>\n",
-                    "line": 36,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
                     "name": "disabled",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nDesabilita o select",
-                    "description": "<p>Desabilita o select</p>\n",
-                    "line": 33,
+                    "line": 29,
                     "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -1446,58 +1731,116 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nLista de opções",
-                    "description": "<p>Lista de opções</p>\n",
-                    "line": 24,
+                    "line": 28,
                     "type": "SelectOption<T>[]",
                     "decorators": []
-                },
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
                 {
-                    "name": "placeholder",
-                    "defaultValue": "'Selecione uma opção'",
+                    "name": "onChange",
+                    "defaultValue": "() => {...}",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nPlaceholder do select",
-                    "description": "<p>Placeholder do select</p>\n",
-                    "line": 30,
-                    "type": "string",
-                    "decorators": []
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "modifierKind": [
+                        123
+                    ]
                 },
                 {
                     "name": "value",
+                    "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nValor selecionado",
-                    "description": "<p>Valor selecionado</p>\n",
-                    "line": 27,
-                    "type": "T",
-                    "decorators": []
+                    "type": "T | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
                 }
             ],
-            "outputsClass": [
-                {
-                    "name": "valueChange",
-                    "defaultValue": "new EventEmitter<T>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nEvento disparado ao alterar o valor",
-                    "description": "<p>Evento disparado ao alterar o valor</p>\n",
-                    "line": 39,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
             "methodsClass": [
                 {
-                    "name": "onChange",
+                    "name": "handleBlur",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 59,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleModelChange",
                     "args": [
                         {
                             "name": "value",
-                            "type": "T",
+                            "type": "T | null",
                             "optional": false,
                             "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "T | null",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "T | null",
+                                    "optional": false,
+                                    "dotDotDotToken": false,
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ]
                         }
                     ],
                     "optional": false,
@@ -1508,8 +1851,116 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "T | null",
+                                    "optional": false,
+                                    "dotDotDotToken": false,
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledState",
+                    "args": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
                             "name": "value",
-                            "type": "T",
+                            "type": "T | null",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "T | null",
                             "optional": false,
                             "dotDotDotToken": false,
                             "deprecated": false,
@@ -1528,18 +1979,25 @@
             "standalone": true,
             "imports": [
                 {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
                     "name": "SelectModule",
                     "type": "module"
                 },
                 {
                     "name": "FormsModule",
                     "type": "module"
+                },
+                {
+                    "name": "FloatLabel"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\nimport { FormsModule } from '@angular/forms';\nimport { SelectModule } from 'primeng/select';\n\n/**\n * Tipo genérico para opção de select\n */\nexport interface SelectOption<T = any> {\n  label: string;\n  value: T;\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-select',\n  standalone: true,\n  imports: [SelectModule, FormsModule],\n  templateUrl: './select.component.html',\n  styleUrls: ['./select.component.scss'],\n})\nexport class SelectComponent<T = any> {\n  /** Lista de opções */\n  @Input() options: SelectOption<T>[] = [];\n\n  /** Valor selecionado */\n  @Input() value?: T;\n\n  /** Placeholder do select */\n  @Input() placeholder = 'Selecione uma opção';\n\n  /** Desabilita o select */\n  @Input() disabled = false;\n\n  /** Limpa seleção */\n  @Input() clearable = false;\n\n  /** Evento disparado ao alterar o valor */\n  @Output() valueChange = new EventEmitter<T>();\n\n  onChange(value: T): void {\n    this.valueChange.emit(value);\n  }\n}\n",
+            "sourceCode": "import { Component, Input, forwardRef } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';\nimport { SelectModule } from 'primeng/select';\nimport { FloatLabel } from \"primeng/floatlabel\";\n\nexport interface SelectOption<T = any> {\n  label: string;\n  value: T;\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-select',\n  standalone: true,\n  imports: [CommonModule, SelectModule, FormsModule, FloatLabel],\n  templateUrl: './select.component.html',\n  styleUrls: ['./select.component.scss'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SelectComponent),\n      multi: true,\n    },\n  ],\n})\nexport class SelectComponent<T = any> implements ControlValueAccessor {\n  @Input() options: SelectOption<T>[] = [];\n  @Input() disabled = false;\n  @Input() label?: string;\n\n  value: T | null = null;\n\n  private onChange: (value: T | null) => void = () => {};\n  private onTouched: () => void = () => {};\n\n  writeValue(value: T | null): void {\n    this.value = value;\n  }\n\n  registerOnChange(fn: (value: T | null) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n  \n  handleModelChange(value: T | null): void {\n    this.value = value;\n    this.onChange(value);\n    this.onTouched();\n  }\n\n  handleBlur(): void {\n    this.onTouched();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1549,7 +2007,10 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<p-select\n  [options]=\"options\"\n  optionLabel=\"label\"\n  optionValue=\"value\"\n  [placeholder]=\"placeholder\"\n  [disabled]=\"disabled\"\n  [showClear]=\"clearable\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onChange($event)\"\n  styleClass=\"app-select\"\n>\n</p-select>\n"
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "templateData": "<div class=\"card w-full\">\n  <div class=\"w-full\">\n    <p-floatlabel variant=\"in\">\n      <p-select\n        [options]=\"options\"\n        [disabled]=\"disabled\"\n        [(ngModel)]=\"value\"\n        (ngModelChange)=\"handleModelChange($event)\"\n        (onBlur)=\"handleBlur()\"\n      ></p-select>\n      <label>{{ label }}</label>\n    </p-floatlabel>\n  </div>\n</div>\n"
         },
         {
             "name": "SplitButtonComponent",
@@ -1700,7 +2161,7 @@
         },
         {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-79cbb1d35d8e52ff440bea91894d41060ff20b091849caa38bc03f1167086e9d820e274434cc4d87f667bd37c5cbfc465c6271a810130e5ee91f8501c99e7feb",
+            "id": "component-TabsComponent-8be19058f110a09d5dc5def0fb02b1f17910cb3a4fddb1bfa9c386cfc854504d96519d5f65f26cfbf5bfc345aec28294671e59a6b7a674fdf744256b714c5065",
             "file": "src/app/shared/organisms/tabs/tabs.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1719,32 +2180,26 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "activeIndex",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
                     "name": "tabs",
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nLista de abas",
-                    "description": "<p>Lista de abas</p>\n",
-                    "line": 27,
+                    "line": 20,
                     "type": "TabItem[]",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "activeIndex",
-                    "defaultValue": "1",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "<p>Aba ativa</p>\n",
-                    "line": 30,
-                    "rawdescription": "\nAba ativa"
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [
                 {
                     "name": "ngOnChanges",
@@ -1761,7 +2216,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 28,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1793,11 +2248,9 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 23,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nSeleciona aba ativa",
-                    "description": "<p>Seleciona aba ativa</p>\n",
                     "jsdoctags": [
                         {
                             "name": "index",
@@ -1831,7 +2284,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, SimpleChanges, Type } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TabsModule } from 'primeng/tabs';\n\nexport interface TabItem {\n  value: string;\n\n  /** Título da aba */\n  label: string;\n\n  /** Componente Angular a ser renderizado dentro da aba */\n  component: Type<any>;\n\n  /** Opcional: desabilita a aba */\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-tabs',\n  standalone: true,\n  imports: [CommonModule, TabsModule],\n  templateUrl: './tabs.component.html',\n  styleUrls: ['./tabs.component.scss'],\n})\nexport class TabsComponent {\n  /** Lista de abas */\n  @Input() tabs: TabItem[] = [];\n\n  /** Aba ativa */\n  activeIndex = 1;\n\n  /** Seleciona aba ativa */\n  selectTab(index: number) {\n    if (this.tabs[index]?.disabled) return;\n    this.activeIndex = index;\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (changes['tabs'] && this.tabs.length > 0 && this.activeIndex === null) {\n      // Define a primeira aba como ativa assim que o array de tabs estiver disponível\n      this.activeIndex = 0;\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, Input, SimpleChanges, Type } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TabsModule } from 'primeng/tabs';\n\nexport interface TabItem {\n  value: string;\n  label: string;\n  component: Type<any>;\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-tabs',\n  standalone: true,\n  imports: [CommonModule, TabsModule],\n  templateUrl: './tabs.component.html',\n  styleUrls: ['./tabs.component.scss'],\n})\nexport class TabsComponent {\n  @Input() tabs: TabItem[] = [];\n  @Input() activeIndex = 0;\n\n  selectTab(index: number) {\n    if (this.tabs[index]?.disabled) return;\n    this.activeIndex = index;\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (changes['tabs'] && this.tabs.length > 0 && this.activeIndex == null) {\n      this.activeIndex = 0;\n    }\n  }\n\n  get activeTab(): TabItem | null {\n    return this.tabs[this.activeIndex] ?? null;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1841,7 +2294,221 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<p-tabs value=\"0\">\n  <p-tablist>\n    @for(tab of tabs; track tab.value) {\n      <p-tab [value]=\"tab.value\">{{ tab.label }}</p-tab>\n    }\n  </p-tablist>\n  <p-tabpanels>\n      @for (tab of tabs; track tab.value) {\n          <p-tabpanel [value]=\"tab.value\">\n              <ng-container \n                *ngComponentOutlet=\"tab.component\"\n              ></ng-container>\n          </p-tabpanel>\n      }\n  </p-tabpanels>\n</p-tabs>"
+            "accessors": {
+                "activeTab": {
+                    "name": "activeTab",
+                    "getSignature": {
+                        "name": "activeTab",
+                        "type": "unknown",
+                        "returnType": "TabItem | null",
+                        "line": 34
+                    }
+                }
+            },
+            "templateData": "<p-tabs [value]=\"activeTab?.value\">\n  <p-tablist>\n    @for(tab of tabs; track $index) {\n      <p-tab\n        [value]=\"tab.value\"\n        [disabled]=\"tab.disabled\"\n        (click)=\"selectTab($index)\"\n      >\n      {{ tab.label }}\n    </p-tab>\n    }\n  </p-tablist>\n\n  <p-tabpanels>\n    @for(tab of tabs; track $index) {\n      <p-tabpanel [value]=\"tab.value\">\n        @if($index === activeIndex) {\n          <ng-container *ngComponentOutlet=\"tab.component\"></ng-container>\n        }\n      </p-tabpanel>\n    }\n  </p-tabpanels>\n</p-tabs>\n"
+        },
+        {
+            "name": "UserAddressTabComponent",
+            "id": "component-UserAddressTabComponent-4e066833fd20ab71b069531ecd0a69075b75e31315b7658e1a76bbfb47a4846a6bbd4baa9b689d02faa171804379aaf44733ea3efb464b3342d6bf27a63d4618",
+            "file": "src/app/features/user/pages/new/components/user-address-tab/user-address-tab.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-user-address-tab",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./user-address-tab.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "store",
+                    "defaultValue": "inject(UserNewStore)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "goBack",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "save",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CardComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "FormInputComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FloatLabelModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputTextModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, inject } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { CardComponent } from '../../../../../../shared/molecules/card/card.component';\nimport { FormInputComponent } from '../../../../../../shared/molecules/form-input/form-input.component';\n\nimport { ButtonModule } from 'primeng/button';\nimport { FloatLabelModule } from 'primeng/floatlabel';\nimport { InputTextModule } from 'primeng/inputtext';\n\nimport { UserNewStore } from '../../store/user-new.store';\n\n@Component({\n  selector: 'app-user-address-tab',\n  standalone: true,\n  imports: [\n    CommonModule,\n    CardComponent,\n    FormInputComponent,\n    ButtonModule,\n    FloatLabelModule,\n    InputTextModule,\n  ],\n  templateUrl: './user-address-tab.component.html',\n})\nexport class UserAddressTabComponent {\n  store = inject(UserNewStore);\n\n  goBack() {\n    window.dispatchEvent(new CustomEvent('user-new:back'));\n  }\n\n  save() {\n    if (this.store.canSave()) {\n      window.dispatchEvent(new CustomEvent('user-new:save'));\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<app-card header=\"Endereço\">\n    <div style=\"display:grid; gap:16px; max-width:680px;\">\n\n    <app-form-input\n        [control]=\"store.cep\"\n        label=\"CEP\"\n        type=\"post-code\"\n        errorMessage=\"CEP é obrigatório\"\n    ></app-form-input>\n\n    <app-form-input\n        [control]=\"store.state\"\n        label=\"Estado (UF)\"\n        type=\"text\"\n        errorMessage=\"Estado é obrigatório\"\n    ></app-form-input>\n\n    <app-form-input\n        [control]=\"store.street\"\n        label=\"Rua\"\n        type=\"text\"\n        errorMessage=\"Rua é obrigatória\"\n    ></app-form-input>\n\n    <app-form-input\n        [control]=\"store.neighborhood\"\n        label=\"Bairro\"\n        type=\"text\"\n        errorMessage=\"Bairro é obrigatório\"\n    ></app-form-input>\n\n    <app-form-input\n        [control]=\"store.number\"\n        label=\"Número\"\n        type=\"text\"\n    >\n    </app-form-input>\n    \n    @if (store.number.invalid && store.number.touched) {\n        <small style=\"color: var(--p-red-500);\">\n            Número é obrigatório e deve conter apenas dígitos\n        </small>\n    }\n\n    <app-form-input\n        [control]=\"store.complement\"\n        label=\"Complemento (opcional)\"\n        type=\"text\"\n    ></app-form-input>\n\n    <div style=\"display:flex; justify-content:space-between; gap:12px;\">\n        <button pButton type=\"button\" label=\"Voltar\" severity=\"secondary\" (click)=\"goBack()\"></button>\n        <button pButton type=\"button\" label=\"Salvar\" (click)=\"save()\"></button>\n    </div>\n\n    </div>\n</app-card>"
+        },
+        {
+            "name": "UserDataTabComponent",
+            "id": "component-UserDataTabComponent-1318b8f731f2e092e871d2cc6b584fe62f7b1edfa8a7965dc65e08014fff799737e3dbc86bba2b1b0194c3783c7f06de6742f8abccf9a27872a345e30e63ad48",
+            "file": "src/app/features/user/pages/new/components/user-data-tab/user-data-tab.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-user-data-tab",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./user-data-tab.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "genderOptions",
+                    "defaultValue": "[\n      { label: 'Masculino', value: 'M' },\n      { label: 'Feminino', value: 'F' },\n      { label: 'Outro', value: 'O' },\n      { label: 'Prefiro não responder', value: 'N' },\n    ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "store",
+                    "defaultValue": "inject(UserNewStore)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "goNext",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CardComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "FormInputComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "SelectModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FloatLabelModule",
+                    "type": "module"
+                },
+                {
+                    "name": "SelectComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, inject } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { CardComponent } from '../../../../../../shared/molecules/card/card.component';\nimport { FormInputComponent } from '../../../../../../shared/molecules/form-input/form-input.component';\n\nimport { ButtonModule } from 'primeng/button';\nimport { FloatLabelModule } from 'primeng/floatlabel';\n\nimport { UserNewStore } from '../../store/user-new.store';\nimport { SelectModule } from 'primeng/select';\nimport { SelectComponent } from \"../../../../../../shared/atoms/select/select.component\";\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { FormComponent } from \"../../../../../../shared/organisms/form/form.component\";\n\n@Component({\n  selector: 'app-user-data-tab',\n  standalone: true,\n  imports: [\n    CommonModule,\n    CardComponent,\n    FormInputComponent,\n    SelectModule,\n    ButtonModule,\n    FloatLabelModule,\n    SelectComponent,\n    ReactiveFormsModule,\n    FormComponent\n],\n  templateUrl: './user-data-tab.component.html',\n})\nexport class UserDataTabComponent {\n  store = inject(UserNewStore);\n\n  genderOptions = [\n      { label: 'Masculino', value: 'M' },\n      { label: 'Feminino', value: 'F' },\n      { label: 'Outro', value: 'O' },\n      { label: 'Prefiro não responder', value: 'N' },\n    ];\n\n  goNext() {\n    if (this.store.canGoNext()) {\n      window.dispatchEvent(new CustomEvent('user-new:next'));\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<app-card header=\"Dados do usuário\">\n    <div style=\"display:grid; gap:16px; max-width:680px;\">\n\n        <app-form-input\n            [control]=\"store.firstName\"\n            label=\"Nome\"\n            type=\"text\"\n            errorMessage=\"Nome é obrigatório\"\n        ></app-form-input>\n\n        <app-form-input\n            [control]=\"store.lastName\"\n            label=\"Sobrenome\"\n            type=\"text\"\n            errorMessage=\"Sobrenome é obrigatório\"\n        ></app-form-input>\n\n        <app-select\n            inputId=\"gender\"\n            label=\"Gênero\"\n            [options]=\"genderOptions\"\n            [formControl]=\"store.gender\"\n        ></app-select>\n\n        <div style=\"display:flex; justify-content:flex-end; gap:12px;\">\n            <button pButton type=\"button\" label=\"Próximo\" (click)=\"goNext()\"></button>\n        </div>\n\n    </div>\n</app-card>"
         },
         {
             "name": "UserListPage",
@@ -1891,17 +2558,25 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<app-card\n  header=\"Lista de usuários\"\n>\n  <app-list \n  [items]=\"[\n    { name: 'João Silva', email: 'joao@email.com', action: '' },\n    { name: 'Maria Souza', email: 'maria@email.com' },\n  ]\" \n  [columns]=\"[\n    { label: 'Nome', field: 'name' },\n    { label: 'Email', field: 'email' },\n  ]\"\n  actionLabel=\"Editar\"\n  ></app-list>\n</app-card>"
+            "templateData": "<app-card\n  header=\"Lista de usuários\"\n>\n  <app-list \n    [items]=\"[\n      { name: 'João Silva', email: 'joao@email.com' },\n      { name: 'Maria Souza', email: 'maria@email.com' },\n    ]\" \n    [columns]=\"[\n      { label: 'Nome', field: 'name' },\n      { label: 'Email', field: 'email' },\n    ]\"\n  ></app-list>\n</app-card>"
         },
         {
             "name": "UserNewPage",
-            "id": "component-UserNewPage-6f3c0e03a3c971bb618c9f91cd3730cd90b0da467c8c6f4b85668ebaa34e9b598971502edccff095b460c06ec48d0b93ed9569d8bf4412893eaf35ebf7ab1e75",
+            "id": "component-UserNewPage-835978c14b9d9e79c945428265b13cfa8b98997cbd2226b473ca88a12db1e3900215cd19ec605b5c7c0a23521586ef02986920673f319d2342c9d49d43ae7a92",
             "file": "src/app/features/user/pages/new/user-new.page.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": "UserNewStore"
+                },
+                {
+                    "name": "MessageService",
+                    "type": "injectable"
+                }
+            ],
             "selector": "app-usuario-novo-page",
             "styleUrls": [],
             "styles": [],
@@ -1912,8 +2587,120 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "activeIndex",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "onBack",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 56
+                },
+                {
+                    "name": "onNext",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 52
+                },
+                {
+                    "name": "onSave",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 60
+                },
+                {
+                    "name": "showSummary",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "store",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "UserNewStore",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "summaryData",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "tabs",
+                    "defaultValue": "[\n    { value: '0', label: 'Dados do usuário', component: UserDataTabComponent },\n    { value: '1', label: 'Endereço', component: UserAddressTabComponent },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TabItem[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1925,19 +2712,80 @@
                     "type": "module"
                 },
                 {
-                    "name": "CardComponent",
+                    "name": "TabsComponent",
                     "type": "component"
+                },
+                {
+                    "name": "DialogModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ToastModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CardComponent } from '../../../../shared/molecules/card/card.component';\n\n@Component({\n  selector: 'app-usuario-novo-page',\n  standalone: true,\n  imports: [CommonModule, CardComponent],\n  templateUrl: './user-new.page.html',\n})\nexport class UserNewPage {}\n",
+            "sourceCode": "import { Component, OnDestroy, OnInit } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { TabsComponent, TabItem } from '../../../../shared/organisms/tabs/tabs.component';\n\nimport { DialogModule } from 'primeng/dialog';\nimport { ToastModule } from 'primeng/toast';\nimport { MessageService } from 'primeng/api';\n\nimport { UserNewStore } from './store/user-new.store';\nimport { UserDataTabComponent } from './components/user-data-tab/user-data-tab.component';\nimport { UserAddressTabComponent } from './components/user-address-tab/user-address-tab.component';\n\n@Component({\n  selector: 'app-usuario-novo-page',\n  standalone: true,\n  imports: [CommonModule, TabsComponent, DialogModule, ToastModule],\n  providers: [UserNewStore, MessageService],\n  templateUrl: './user-new.page.html',\n})\nexport class UserNewPage implements OnInit, OnDestroy {\n  activeIndex = 0;\n\n  showSummary = false;\n  summaryData: any = null;\n\n  tabs: TabItem[] = [\n    { value: '0', label: 'Dados do usuário', component: UserDataTabComponent },\n    { value: '1', label: 'Endereço', component: UserAddressTabComponent },\n  ];\n\n  constructor(public store: UserNewStore, private msg: MessageService) {}\n\n  ngOnInit(): void {\n    this.store.initCepLookup(\n      () => this.msg.add({ severity: 'warn', summary: 'CEP inválido', detail: 'CEP não encontrado.', life: 2500 }),\n      () => this.msg.add({ severity: 'error', summary: 'Erro', detail: 'Falha ao consultar CEP.', life: 2500 }),\n    );\n\n    window.addEventListener('user-new:next', this.onNext);\n    window.addEventListener('user-new:back', this.onBack);\n    window.addEventListener('user-new:save', this.onSave);\n  }\n\n  ngOnDestroy(): void {\n    window.removeEventListener('user-new:next', this.onNext);\n    window.removeEventListener('user-new:back', this.onBack);\n    window.removeEventListener('user-new:save', this.onSave);\n    this.store.destroy();\n  }\n\n  onNext = () => {\n    this.activeIndex = 1;\n  };\n\n  onBack = () => {\n    this.activeIndex = 0;\n  };\n\n  onSave = () => {\n    this.summaryData = this.store.getSummary();\n    this.showSummary = true;\n  };\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "store",
+                        "type": "UserNewStore",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "msg",
+                        "type": "MessageService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 30,
+                "jsdoctags": [
+                    {
+                        "name": "store",
+                        "type": "UserNewStore",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "msg",
+                        "type": "MessageService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
-            "templateData": "<app-card>\n  <div card-header class=\"page-header\">\n    <h2 class=\"title\">Cadastro de usuário</h2>\n  </div>\n</app-card>"
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "templateData": "<p-toast></p-toast>\n\n<app-tabs [tabs]=\"tabs\" [activeIndex]=\"activeIndex\"/>\n\n<p-dialog\n  header=\"Resumo do cadastro\"\n  [(visible)]=\"showSummary\"\n  [modal]=\"true\"\n  [draggable]=\"false\"\n  [resizable]=\"false\"\n  [style]=\"{ width: 'min(640px, 92vw)' }\"\n>\n  <pre style=\"margin:0; white-space:pre-wrap;\">{{ summaryData | json }}</pre>\n</p-dialog>\n"
         }
     ],
     "modules": [],
@@ -2109,7 +2957,7 @@
         ]
     },
     "coverage": {
-        "count": 8,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -2174,7 +3022,7 @@
                 "linktype": "interface",
                 "name": "CepResponseModel",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -2215,12 +3063,39 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/features/user/pages/new/components/user-address-tab/user-address-tab.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserAddressTabComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/user/pages/new/components/user-data-tab/user-data-tab.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserDataTabComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/user/pages/new/store/user-new.store.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UserNewStore",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/features/user/pages/new/user-new.page.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "UserNewPage",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
@@ -2247,17 +3122,17 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "SelectComponent",
-                "coveragePercent": 75,
-                "coverageCount": "6/8",
-                "status": "good"
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
             },
             {
                 "filePath": "src/app/shared/atoms/select/select.component.ts",
                 "type": "interface",
                 "linktype": "interface",
                 "name": "SelectOption",
-                "coveragePercent": 25,
-                "coverageCount": "1/4",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -2356,18 +3231,18 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "TabsComponent",
-                "coveragePercent": 60,
-                "coverageCount": "3/5",
-                "status": "good"
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
             },
             {
                 "filePath": "src/app/shared/organisms/tabs/tabs.component.ts",
                 "type": "interface",
                 "linktype": "interface",
                 "name": "TabItem",
-                "coveragePercent": 60,
-                "coverageCount": "3/5",
-                "status": "good"
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
             }
         ]
     }

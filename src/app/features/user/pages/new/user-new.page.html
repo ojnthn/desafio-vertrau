@@ -1,14 +1,3 @@
 <p-toast></p-toast>
 
 <app-tabs [tabs]="tabs" [activeIndex]="activeIndex"/>
-
-<p-dialog
-  header="Resumo do cadastro"
-  [(visible)]="showSummary"
-  [modal]="true"
-  [draggable]="false"
-  [resizable]="false"
-  [style]="{ width: 'min(640px, 92vw)' }"
->
-  <pre style="margin:0; white-space:pre-wrap;">{{ summaryData | json }}</pre>
-</p-dialog>

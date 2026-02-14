@@ -1,13 +1,15 @@
-<div class="form-field">
-  <p-floatLabel>
+<div class="card flex justify-center">
+  <p-floatLabel variant="in">
     @if (mask) {
       <p-inputMask
+        fluid
         [mask]="mask"
         [formControl]="control"
         [ngClass]="{ 'p-invalid': hasError }"
       />
     } @else {
       <input
+        fluid
         pInputText
         [type]="type"
         [formControl]="control"

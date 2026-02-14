@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, effect, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TabsComponent, TabItem } from '../../../../shared/organisms/tabs/tabs.component';
@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/api';
 import { UserNewStore } from './store/user-new.store';
 import { UserDataTabComponent } from './components/user-data-tab/user-data-tab.component';
 import { UserAddressTabComponent } from './components/user-address-tab/user-address-tab.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-novo-page',
@@ -20,16 +21,24 @@ import { UserAddressTabComponent } from './components/user-address-tab/user-addr
 })
 export class UserNewPage implements OnInit, OnDestroy {
   activeIndex = 0;
-
-  showSummary = false;
-  summaryData: any = null;
+  isLoading = false;
 
   tabs: TabItem[] = [
     { value: '0', label: 'Dados do usuário', component: UserDataTabComponent },
     { value: '1', label: 'Endereço', component: UserAddressTabComponent },
   ];
 
-  constructor(public store: UserNewStore, private msg: MessageService) {}
+  constructor(
+    public store: UserNewStore, 
+    private msg: MessageService, 
+    private router: Router
+  ) {
+    effect(() => {
+      if (this.store.saved) {
+        this.router.navigate(['/usuario/lista']);
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.store.initCepLookup(
@@ -58,7 +67,6 @@ export class UserNewPage implements OnInit, OnDestroy {
   };
 
   onSave = () => {
-    this.summaryData = this.store.getSummary();
-    this.showSummary = true;
+    this.store.save();
   };
 }

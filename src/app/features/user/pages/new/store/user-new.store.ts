@@ -1,14 +1,22 @@
-import { Injectable } from '@angular/core';
+import { inject, Inject, Injectable, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
 import { Subject, takeUntil } from 'rxjs';
 import { CepService } from '../../../../../core/services/cep/cep.service';
+import { USER_REPOSITORY, UserRepository } from '../../../domain/repositories/user-new.repository';
+import { Router } from '@angular/router';
 
 
 
 @Injectable()
 export class UserNewStore {
   private destroy$ = new Subject<void>();
+  private _saved = signal(false);
+  private _isLoading = signal(false);
+  private _message = signal<string | null>(null);
+  private _error = signal<string | null>(null);
+
+  private router = inject(Router);
 
   form = new FormGroup({
     firstName: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
@@ -36,8 +44,17 @@ export class UserNewStore {
   get neighborhood() { return this.form.controls.neighborhood; }
   get number() { return this.form.controls.number; }
   get complement() { return this.form.controls.complement; }
+  
+  get isLoading() { return this._isLoading(); }
+  get message() { return this._message(); }
+  get error() { return this._error(); }
+  get saved() { return this._saved(); }
 
-  constructor(private cepService: CepService) {}
+  constructor(
+    private cepService: CepService, 
+    @Inject(USER_REPOSITORY) 
+    private repository: UserRepository
+  ) {}
 
   initCepLookup(onInvalidCep?: () => void, onError?: () => void) {
     this.cep.valueChanges
@@ -84,9 +101,46 @@ export class UserNewStore {
     if (only !== value) this.number.setValue(only);
   }
 
-  getSummary() {
-    return this.form.getRawValue();
+  save(): void {
+    if (!this.canSave()) {
+      this._error.set('Preencha todos os campos obrigatórios.');
+      return;
+    }
+
+    this._error.set(null);
+    this._message.set(null);
+    this._isLoading.set(true);
+
+    setTimeout(() => {
+      try {
+        const rawValue = this.form.getRawValue();
+        const entity = {
+          firstName: rawValue.firstName,
+          lastName: rawValue.lastName,
+          gender: rawValue.gender,
+          address: {
+            cep: rawValue.cep,
+            state: rawValue.state,
+            street: rawValue.street,
+            neighborhood: rawValue.neighborhood,
+            number: rawValue.number,
+            complement: rawValue.complement,
+          }
+        }
+
+        this.repository.save(entity);
+
+        this._message.set('Usuário salvo com sucesso!');
+        this.form.reset();
+      } catch (e) {
+        this._error.set('Erro ao salvar usuário.');
+      } finally {
+        this._isLoading.set(false);
+        this._saved.set(true);
+      }
+    }, 2000);
   }
+
 
   destroy() {
     this.destroy$.next();
