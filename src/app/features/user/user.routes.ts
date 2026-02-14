@@ -8,6 +8,11 @@ export const USER_ROUTES: Routes = [
     children: [
       {
         path: 'lista',
+        providers: [
+          UserRepositoryImpl,
+          { provide: USER_REPOSITORY, useClass: UserRepositoryImpl },
+          { provide: USER_LOCAL_DATASOURCE, useClass: UserLocalDatasourceImpl }
+        ],
         loadComponent: () =>
           import('./pages/list/user-list.page').then((m) => m.UserListPage),
       },

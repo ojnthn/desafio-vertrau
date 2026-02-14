@@ -21,7 +21,6 @@ import { Router } from '@angular/router';
 })
 export class UserNewPage implements OnInit, OnDestroy {
   activeIndex = 0;
-  isLoading = false;
 
   tabs: TabItem[] = [
     { value: '0', label: 'Dados do usuário', component: UserDataTabComponent },
@@ -67,6 +66,9 @@ export class UserNewPage implements OnInit, OnDestroy {
   };
 
   onSave = () => {
-    this.store.save();
+    this.store.save(
+      () => this.msg.add({ severity: 'success', summary: 'Sucesso', detail: 'Usuário salvo com sucesso', life: 2500 }),
+      (errorMessage) => this.msg.add({ severity: 'success', summary: 'Erro', detail: errorMessage, life: 2500 })
+    );
   };
 }

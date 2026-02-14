@@ -14,20 +14,20 @@ export class UserModel {
     public complement: string
   ) {}
 
-  toEntity(): UserEntity {
+  static toEntity(model: UserModel): UserEntity {
     return {
-      id: this.id,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      gender: this.gender,
+      id: model.id,
+      firstName: model.firstName,
+      lastName: model.lastName,
+      gender: model.gender,
       address: {
-        cep: this.cep,
-        state: this.state,
-        street: this.street,
-        neighborhood: this.neighborhood,
-        number: this.number,
-        complement: this.complement,
-      }
-    }
+        cep: model.cep,
+        state: model.state,
+        street: model.street,
+        neighborhood: model.neighborhood,
+        number: model.number,
+        complement: model.complement,
+      },
+    };
   }
 }

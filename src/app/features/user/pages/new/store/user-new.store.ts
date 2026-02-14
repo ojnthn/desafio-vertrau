@@ -6,8 +6,6 @@ import { CepService } from '../../../../../core/services/cep/cep.service';
 import { USER_REPOSITORY, UserRepository } from '../../../domain/repositories/user-new.repository';
 import { Router } from '@angular/router';
 
-
-
 @Injectable()
 export class UserNewStore {
   private destroy$ = new Subject<void>();
@@ -46,8 +44,6 @@ export class UserNewStore {
   get complement() { return this.form.controls.complement; }
   
   get isLoading() { return this._isLoading(); }
-  get message() { return this._message(); }
-  get error() { return this._error(); }
   get saved() { return this._saved(); }
 
   constructor(
@@ -101,7 +97,10 @@ export class UserNewStore {
     if (only !== value) this.number.setValue(only);
   }
 
-  save(): void {
+  save(
+    onSuccess: () => void, 
+    onError: (message: string) => void,
+  ): void {
     if (!this.canSave()) {
       this._error.set('Preencha todos os campos obrigatórios.');
       return;
@@ -133,10 +132,13 @@ export class UserNewStore {
         this._message.set('Usuário salvo com sucesso!');
         this.form.reset();
       } catch (e) {
-        this._error.set('Erro ao salvar usuário.');
+        onError('Erro ao salvar usuário.')
       } finally {
         this._isLoading.set(false);
-        this._saved.set(true);
+        onSuccess();
+        setTimeout(() => {
+          this._saved.set(true);
+        }, 2500);
       }
     }, 2000);
   }

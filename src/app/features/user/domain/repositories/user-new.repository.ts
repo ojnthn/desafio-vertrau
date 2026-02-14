@@ -9,6 +9,7 @@ import {
 } from '../../data/datasources/user.datasource';
 
 import { UserNewModel } from '../../data/models/user-new/user-new.mode';
+import { UserModel } from '../../data/models/user/user.model';
 
 export const USER_REPOSITORY =
   new InjectionToken<UserRepository>('USER_REPOSITORY');
@@ -31,13 +32,13 @@ export class UserRepositoryImpl implements UserRepository {
   save(entity: UserNewEntity): UserEntity {
     const postModel = UserNewModel.fromEntity(entity);
     const savedModel = this.datasource.save(postModel);
-    return savedModel.toEntity();
+    return UserModel.toEntity(savedModel);
   }
 
   findAll(): UserEntity[] {
     return this.datasource
       .findAll()
-      .map(model => model.toEntity());
+      .map(model => UserModel.toEntity(model));
   }
 
   update(entity: UserEntity): void {}

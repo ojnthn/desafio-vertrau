@@ -2,13 +2,10 @@
   header="Lista de usuários"
 >
   <app-list 
-    [items]="[
-      { name: 'João Silva', email: 'joao@email.com' },
-      { name: 'Maria Souza', email: 'maria@email.com' },
-    ]" 
+    [items]="list" 
     [columns]="[
-      { label: 'Nome', field: 'name' },
-      { label: 'Email', field: 'email' },
+      { label: 'Nome', field: 'firstName' },
+      { label: 'Sobrenome', field: 'lastName' },
     ]"
   ></app-list>
 </app-card>
