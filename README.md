@@ -114,10 +114,17 @@ Para usar:
       /layout
       /services
     /features
-      /pages
-        - page-name/
-          - page-name.component.ts
-          - page-name.component.html
+      - feature-name/
+        /data
+          /datasource
+          /models
+        /domain
+          /entities
+          /repositories
+        /pages
+          - page-name/
+            - page-name.page.ts
+            - page-name.page.html
     /shared
       /atoms
         - component-name/
