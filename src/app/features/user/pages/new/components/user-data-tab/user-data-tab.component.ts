@@ -8,6 +8,7 @@ import { CardComponent } from '../../../../../../shared/molecules/card/card.comp
 import { FormInputComponent } from '../../../../../../shared/molecules/form-input/form-input.component';
 import { SelectComponent } from '../../../../../../shared/atoms/select/select.component';
 import { UserNewStore } from '../../store/user-new.store';
+import { ButtonComponent } from "../../../../../../shared/atoms/button/button.component";
 
 @Component({
   selector: 'app-user-data-tab',
@@ -21,6 +22,7 @@ import { UserNewStore } from '../../store/user-new.store';
     FloatLabelModule,
     SelectComponent,
     ReactiveFormsModule,
+    ButtonComponent
 ],
   templateUrl: './user-data-tab.component.html',
 })

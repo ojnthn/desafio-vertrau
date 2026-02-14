@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { TableModule } from 'primeng/table';
 
 export interface DataListColumn<T> {
@@ -10,7 +11,7 @@ export interface DataListColumn<T> {
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [TableModule],
+  imports: [TableModule, CommonModule],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })

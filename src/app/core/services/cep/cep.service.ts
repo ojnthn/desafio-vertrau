@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CepResponseModel } from './cep.model';
+
+export interface CepResponseModel {
+    uf: string;
+    logradouro: string;
+    bairro: string;
+    erro?: boolean;
+}
 
 @Injectable({ providedIn: 'root' })
 export class CepService {
@@ -12,4 +18,3 @@ export class CepService {
     return this.http.get<CepResponseModel>(`https://viacep.com.br/ws/${onlyDigits}/json/`);
   }
 }
-
