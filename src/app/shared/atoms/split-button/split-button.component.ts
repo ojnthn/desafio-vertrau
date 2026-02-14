@@ -26,7 +26,6 @@ export class SplitButtonComponent {
     this.primaryOption.command?.(commandEvent);
   }
 
-
   get primaryOption(): MenuItem {
     return this.options[0];
   }

@@ -1,15 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CardComponent } from '../../../../../../shared/molecules/card/card.component';
-import { FormInputComponent } from '../../../../../../shared/molecules/form-input/form-input.component';
+
 
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
-
-import { UserNewStore } from '../../store/user-new.store';
+import { CardComponent } from '../../../../../../shared/molecules/card/card.component';
+import { FormInputComponent } from '../../../../../../shared/molecules/form-input/form-input.component';
 import { ButtonComponent } from '../../../../../../shared/atoms/button/button.component';
+import { UserNewStore } from '../../store/user-new.store';
+
 
 @Component({
   selector: 'app-user-address-tab',

@@ -1,17 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { CardComponent } from '../../../../../../shared/molecules/card/card.component';
-import { FormInputComponent } from '../../../../../../shared/molecules/form-input/form-input.component';
-
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
-
-import { UserNewStore } from '../../store/user-new.store';
 import { SelectModule } from 'primeng/select';
-import { SelectComponent } from "../../../../../../shared/atoms/select/select.component";
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormComponent } from "../../../../../../shared/organisms/form/form.component";
+import { CardComponent } from '../../../../../../shared/molecules/card/card.component';
+import { FormInputComponent } from '../../../../../../shared/molecules/form-input/form-input.component';
+import { SelectComponent } from '../../../../../../shared/atoms/select/select.component';
+import { UserNewStore } from '../../store/user-new.store';
 
 @Component({
   selector: 'app-user-data-tab',

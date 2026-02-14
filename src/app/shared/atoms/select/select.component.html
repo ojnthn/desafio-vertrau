@@ -2,14 +2,22 @@
   <div>
     <p-floatlabel variant="in">
       <p-select
-        fluid
         [options]="options"
         [disabled]="disabled"
         [(ngModel)]="value"
         (ngModelChange)="handleModelChange($event)"
         (onBlur)="handleBlur()"
+        [class.p-invalid]="isInvalid"
+        fluid
       ></p-select>
       <label>{{ label }}</label>
     </p-floatlabel>
+    
+    @if (isInvalid) {
+      <small class="p-error">
+        {{ label }} é obrigatório
+      </small>
+    }
+    
   </div>
 </div>

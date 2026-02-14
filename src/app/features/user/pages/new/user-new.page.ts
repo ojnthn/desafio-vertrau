@@ -8,9 +8,9 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
 import { UserNewStore } from './store/user-new.store';
+import { Router } from '@angular/router';
 import { UserDataTabComponent } from './components/user-data-tab/user-data-tab.component';
 import { UserAddressTabComponent } from './components/user-address-tab/user-address-tab.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-novo-page',

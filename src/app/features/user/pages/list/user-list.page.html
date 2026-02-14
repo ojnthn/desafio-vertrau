@@ -1,11 +1,9 @@
 <app-card
   header="Lista de usuários"
 >
-  <app-list 
-    [items]="list" 
-    [columns]="[
-      { label: 'Nome', field: 'firstName' },
-      { label: 'Sobrenome', field: 'lastName' },
-    ]"
-  ></app-list>
+    <app-list
+      [items]="list"
+      [columns]="columns">
+  </app-list>
+
 </app-card>

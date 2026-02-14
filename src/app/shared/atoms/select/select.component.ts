@@ -1,8 +1,8 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
-import { FloatLabel } from "primeng/floatlabel";
+import { FloatLabel } from 'primeng/floatlabel';
 
 export interface SelectOption<T = any> {
   label: string;
@@ -28,8 +28,10 @@ export class SelectComponent<T = any> implements ControlValueAccessor {
   @Input() options: SelectOption<T>[] = [];
   @Input() disabled = false;
   @Input() label?: string;
+  @Input() required = false; // ✅ Novo
 
   value: T | null = null;
+  touched = false;
 
   private onChange: (value: T | null) => void = () => {};
   private onTouched: () => void = () => {};
@@ -49,14 +51,20 @@ export class SelectComponent<T = any> implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
-  
+
   handleModelChange(value: T | null): void {
     this.value = value;
     this.onChange(value);
+    this.touched = true;
     this.onTouched();
   }
 
   handleBlur(): void {
+    this.touched = true;
     this.onTouched();
+  }
+
+  get isInvalid(): boolean {
+    return this.required && this.touched && (this.value === null || this.value === undefined || this.value === '');
   }
 }
