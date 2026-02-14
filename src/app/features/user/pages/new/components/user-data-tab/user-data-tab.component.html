@@ -21,6 +21,7 @@
             [options]="genderOptions"
             [formControl]="store.gender"
             [required]="true"
+            [isInvalid]="store.gender.invalid && store.gender.touched"
         ></app-select>
 
         <div style="display:flex; justify-content:flex-end; gap:12px;">

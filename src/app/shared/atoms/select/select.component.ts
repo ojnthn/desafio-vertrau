@@ -29,6 +29,7 @@ export class SelectComponent<T = any> implements ControlValueAccessor {
   @Input() disabled = false;
   @Input() label?: string;
   @Input() required = false;
+  @Input() isInvalid = false;
 
   value: T | null = null;
   touched = false;
@@ -62,9 +63,5 @@ export class SelectComponent<T = any> implements ControlValueAccessor {
   handleBlur(): void {
     this.touched = true;
     this.onTouched();
-  }
-
-  get isInvalid(): boolean {
-    return this.required && this.touched && (this.value === null || this.value === undefined || this.value === '');
   }
 }
